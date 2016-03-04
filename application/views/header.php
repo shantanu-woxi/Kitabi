@@ -24,15 +24,15 @@
               </a>
             </li>
             <li>
-              <a href="contact">
-                <i class="register fa fa-user-plus" data-toggle="tooltip" title="Sign Up"></i>
-              </a>
+              <a href="contact" class="loginHref">
+                SignUp
+              </a> <span class="loginHref">|</span>
             </li>
             <li class="loginMenu">
                 <?php if(empty($this->session->userdata['id'])){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
-                     <a class="logoutLink" href="logout">Logout</a>
+                     <a class="logoutLink logoutHref" href="logout">Logout</a>
                 <?php }?>
                     <div class="loignForm">
                         <form action="dashboard" method="post">

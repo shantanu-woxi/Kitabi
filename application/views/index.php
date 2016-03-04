@@ -71,14 +71,20 @@
 
               <!-- Tab panes -->
               <div class="tab-content subjectContentInfo">
-                <div role="tabpanel" class="tab-pane active" id="home">
+                <div role="tabpanel" class="tab-pane active" id="examperp">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh. Nulla facilisi. Pellentesque enim nulla, aliquet eu faucibus sed, bibendum sit amet nisi. Duis ut accumsan nibh, quis malesuada nisi. Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum
                   </p>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh. Nulla facilisi. Pellentesque enim nulla, aliquet eu faucibus sed, bibendum sit amet nisi. Duis ut accumsan nibh, quis malesuada nisi. Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum
                   </p>
-                  <p><a href="" class="btn-primary">Read More > </a></p>
+                  <p>
+                    <?php if(empty($this->session->userdata['id'])){?>
+                      <a href="contact" class="btn-primary">Read More ></a>
+                    <?php }else{?>
+                      <a href="dashboard" class="btn-primary">Read More ></a>
+                    <?php }?>                    
+                  </p>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="profile">
                   <p>
@@ -87,7 +93,13 @@
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh. Nulla facilisi. Pellentesque enim nulla, aliquet eu faucibus sed, bibendum sit amet nisi. Duis ut accumsan nibh, quis malesuada nisi. Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum
                   </p>
-                  <p><a href="" class="btn-primary">Read More > </a></p>
+                  <p>
+                    <?php if(empty($this->session->userdata['id'])){?>
+                      <a href="contact" class="btn-primary">Read More ></a>
+                    <?php }else{?>
+                      <a href="dashboard" class="btn-primary">Read More ></a>
+                    <?php }?>                    
+                  </p>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="messages">
                   <p>
@@ -96,7 +108,13 @@
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh. Nulla facilisi. Pellentesque enim nulla, aliquet eu faucibus sed, bibendum sit amet nisi. Duis ut accumsan nibh, quis malesuada nisi. Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum
                   </p>
-                  <p><a href="" class="btn-primary">Read More > </a></p>
+                  <p>
+                    <?php if(empty($this->session->userdata['id'])){?>
+                      <a href="contact" class="btn-primary">Read More ></a>
+                    <?php }else{?>
+                      <a href="dashboard" class="btn-primary">Read More ></a>
+                    <?php }?>                    
+                  </p>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="settings">
                   <p>
@@ -105,7 +123,13 @@
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh. Nulla facilisi. Pellentesque enim nulla, aliquet eu faucibus sed, bibendum sit amet nisi. Duis ut accumsan nibh, quis malesuada nisi. Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum Nullam dictum vulputate libero, in elementum odio imperdiet non. Fusce eget orci arcu. Aliquam faucibus accumsan sem vitae venenatis. Sed porta fringilla risus nec rutrum
                   </p>
-                  <p><a href="" class="btn-primary">Read More > </a></p>
+                  <p>
+                    <?php if(empty($this->session->userdata['id'])){?>
+                      <a href="contact" class="btn-primary">Read More ></a>
+                    <?php }else{?>
+                      <a href="dashboard" class="btn-primary">Read More ></a>
+                    <?php }?>                    
+                  </p>
                 </div>
               </div>
 
