@@ -32,29 +32,14 @@
         <div class="row">
           <div class="col-xs-4">
             <div class="impUpdates">
-              <h4 class="text-center">Important Updates</h4>
+              <h4 class="text-center">Blogs</h4>
               <ul class="impUpdatesList">
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
-                <li>
-                  <a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis blandit nibh.</a>
-                </li>
+                
+                <?php foreach($blog_title as $title){ ?>
+                  <li>
+                  <a href=""><?php echo $title;?></a>
+                 </li>
+                <?php } ?>
               </ul>
             </div>
           </div>
