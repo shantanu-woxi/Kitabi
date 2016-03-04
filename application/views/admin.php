@@ -97,14 +97,14 @@
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
-                    <form>
+                    <form action="blog" method="post">
                       <div class="form-group">
                         <label for="blogtitle">Blog Title</label>
-                        <input type="text" class="form-control" id="blogtitle">
+                        <input type="text" class="form-control" id="blogtitle" name="title">
                       </div>
                       <div class="form-group">
                         <label for="blogtitle">Blog Data</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" name="description"></textarea>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

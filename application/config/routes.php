@@ -60,3 +60,4 @@ $route['contact'] = 'welcome/contact';
 $route['aboutus'] = 'welcome/aboutus';
 $route['impupdates'] = 'welcome/impupdates';
 $route['practiceques'] = 'welcome/practiceques';
+$route['blog'] = 'blog/insertBlog';
