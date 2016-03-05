@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <title>Title of the document</title>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-    <!--<link rel="stylesheet" href="assets/css/font-awesome.min.css">-->
+    <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
@@ -23,12 +23,12 @@
                 <i class="fa fa-google-plus-square"></i>
               </a>
             </li>
-            <li>
+            <li class="v-top">
               <a href="contact" class="loginHref">
                 SignUp
               </a> <span class="loginHref">|</span>
             </li>
-            <li class="loginMenu">
+            <li class="loginMenu v-top">
                 <?php if(empty($this->session->userdata['id'])){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
@@ -66,7 +66,7 @@
                       <li><a class="home" href="welcome"><i class="fa fa-home"></i></a></li>
                     <li><a href="dashboard">Dashboard</a></li>
                     <li><a href="welcome#coursesOffered">Courses Offered</a></li>
-                    <li><a href="practiceques">Practice Questions</a></li>
+                    <li><a href="practice-questions">Practice Questions</a></li>
                     <li><a href="contact">Contact Us</a></li>
                     <li><a href="aboutus">About Us</a></li>                    
                   </ul>

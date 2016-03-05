@@ -32,14 +32,20 @@
         <div class="row">
           <div class="col-xs-4">
             <div class="impUpdates">
-              <h4 class="text-center">Blogs</h4>
-              <ul class="impUpdatesList">
-                
-                <?php foreach($blog_title as $title){ ?>
+              <h4 class="text-center">Important Updates</h4>
+              <ul class="impUpdatesList">                
+                <?php 
+                if(!empty($blog_title)){
+                  foreach($blog_title as $title){ ?>
                   <li>
-                  <a href=""><?php echo $title;?></a>
+                  <a href="importantupdate"><?php echo $title;?></a>
                  </li>
-                <?php } ?>
+                 <?php
+                  }
+                }else{?>
+                    <li class="color-red">There are no Updates.</li>
+                <?php
+                }?>
               </ul>
             </div>
           </div>

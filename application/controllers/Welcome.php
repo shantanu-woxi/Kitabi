@@ -26,7 +26,4 @@ class Welcome extends CI_Controller {
     public function impupdates(){
         $this->load->view('impupdates');
     }
-    public function practiceques(){
-        $this->load->view('practiceques');
-    }
 }

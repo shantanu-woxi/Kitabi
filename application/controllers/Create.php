@@ -65,7 +65,7 @@ class Create extends CI_Controller {
         
         //uploading file
             $this->load->helper(array('form', 'url'));
-            $config['upload_path'] = 'assets/'.$_POST['upload_subject_name'].'/';
+            $config['upload_path'] = 'assets/sections/'.$_POST['upload_subject_name'].'/';
             $config['allowed_types'] = 'gif|jpg|png|pdf';
             $config['max_size']	= '0';
             $config['max_width']  = '1024';
@@ -75,7 +75,7 @@ class Create extends CI_Controller {
 
             if ( ! $this->upload->do_upload('userfile'))
             {
-		$error = array('error' => $this->upload->display_errors());
+		      $error = array('error' => $this->upload->display_errors());
               //         print_r($error);
                 //		$this->load->view('upload_form', $error);
             }

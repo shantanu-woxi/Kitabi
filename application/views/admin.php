@@ -12,8 +12,8 @@
           <ul class="nav nav-pills nav-stacked dashboardNav">
             <li role="presentation" class="active"><a  href="#create" data-toggle="tab">Create Section</a></li>
             <li role="presentation"><a  href="#uploads" data-toggle="tab">Upload Section</a></li>
-            <li role="presentation"><a  href="#blogs" data-toggle="tab">Create Blog</a></li>
-            <li role="presentation"><a  href="#pracQuestion" data-toggle="tab">Practice Questions</a></li>
+            <li role="presentation"><a  href="#blogs" data-toggle="tab">Important Update</a></li>
+            <li role="presentation"><a  href="#pracQuestion" data-toggle="tab">Practice Question</a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
               <span class="caret"></span></a>
@@ -93,19 +93,19 @@
               </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="blogs">
-              <h2 class="dashboardTitles">Blogs Section</h2>
+              <h2 class="dashboardTitles">Important Update</h2>
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
                     <form action="blog" method="post">
                       <div class="form-group">
-                        <label for="blogtitle">Blog Title</label>
+                        <label for="blogtitle">Important Update Title</label>
                         <input type="text" class="form-control" id="blogtitle" name="title">
                       </div>
                       <div class="form-group">
-                        <label for="blogtitle">Blog Data</label>
+                        <label for="blogtitle">Description</label>
                         <textarea class="form-control" rows="3" name="description"></textarea>
-                      </div>
+                      </div>                      
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                   </div>
@@ -113,18 +113,23 @@
               </div><!--row-->
             </div>
             <div role="tabpanel" class="tab-pane fade" id="pracQuestion">
-              <h2 class="dashboardTitles">Practice Questions</h2>
+              <h2 class="dashboardTitles">Practice Question</h2>
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
-                    <form>
+                    <form action="store-practice-question" method="post" enctype="multipart/form-data">
                       <div class="form-group">
-                        <label for="blogtitle">Blog Title</label>
-                        <input type="text" class="form-control" id="blogtitle">
+                        <label for="blogtitle">Practice Question</label>
+                        <input type="text" class="form-control" id="practice-question-title" name="title">
                       </div>
                       <div class="form-group">
-                        <label for="blogtitle">Blog Data</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <label for="blogtitle">Description</label>
+                        <textarea class="form-control" rows="3" id="practice-question-description" name="description"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputFile">Upload Image</label>
+                        <input type="file" id="quesimage" name="userfile" multiple="multiple">
+                        <p class="help-block">Example aster.jpg</p>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -142,9 +147,9 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
   </body>
 
 </html>

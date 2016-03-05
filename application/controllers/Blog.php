@@ -32,5 +32,11 @@ class Blog extends CI_Controller
             return $this->load->view('admin');//need to add with flash message
         
     }
+    function getBlogs(){
+        $this->load->view('header');
+        $this->load->model('Blogs');
+        $data['blogs'] = $this->Blogs->getBlogs();
+        return $this->load->view('importantupdate', $data);
+    }
 }
 ?>
