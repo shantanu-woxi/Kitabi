@@ -5,18 +5,22 @@ $(document).ready(function(){
 
   // dashboard subjects show/hide
   $("#engcall").click(function(){
+    getChaptersList(1);
     hideSubjectWrap();
     $("#engLessons").show();
   });
   $("#gkcall").click(function(){
+    getChaptersList(2);
     hideSubjectWrap();
     $("#gkLessons").show();
   });
   $("#mathscall").click(function(){
+    getChaptersList(3);
     hideSubjectWrap();
     $("#mathsLessons").show();
   });
   $("#reasoncall").click(function(){
+    getChaptersList(4);
     hideSubjectWrap();
     $("#reasonLessons").show();
   });
@@ -29,10 +33,68 @@ $(document).ready(function(){
   // dashboardmenu height
   var dashboardmenuHeight = $(window).height() - ($(".welcomeStrip").height() + $(".header").height()); 
   $(".sidebarNav").height(dashboardmenuHeight);
+
+  // function loadChapters(subId){
+  //   var dataString = 'subId ='+ subId;
+  //   $("#loader").show();
+  //     $("#loader").fadeIn(400).html('Please wait... <img src="assets/images/loading.gif" />');
+  //   $.ajax({
+  //     type: "POST",
+  //     url: "get-chapters",
+  //     data: dataString,
+  //     cache: false,
+  //     success: function(result){
+  //       $("#loader").hide(); 
+  //       $("#selectSectionId").html(result);  
+  //     }
+  //   });
+  // }
 });
 var hideSubjectWrap = function() {
   $(".subjectsWrap").hide();
 }
 var showSubjectWrap = function() {
   $(".subjectsWrap").show();
+}
+
+var loadChapters = function (subId){
+  console.log('into loadChapters');
+  $("#loader").show();
+    $("#loader").fadeIn(400).html('Please wait... <img src="assets/images/loading.gif" />');
+  $.ajax({
+    type: "POST",
+    url: "get-chapters",
+    data:{subid: subId},
+    cache: false,
+    success: function(result){
+      $("#loader").hide(); 
+      $("#selectSectionId").html(result);  
+    }
+  });
+}
+
+var getChaptersList = function (subId){
+  $.ajax({
+    type: "POST",
+    url: "get-chapters-list",
+    data:{subid: subId},
+    cache: false,
+    success: function(result){
+      if(subId == 1){
+        $("#englishContent").html(result);
+      }
+      
+      if(subId == 2){
+        $("#gkContent").html(result);
+      }
+
+      if(subId == 3){
+        $("#mathsContent").html(result);
+      }
+
+      if(subId == 4){
+        $("#reasoningContent").html(result);
+      } 
+    }
+  });
 }

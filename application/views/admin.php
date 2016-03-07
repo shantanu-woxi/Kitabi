@@ -36,16 +36,16 @@
                     <form action="section" method="POST">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Subject</label>
-                        <select class="form-control" name="subject_Names">
-                          <option>English</option>
-                          <option>G.K.</option>
-                          <option>Maths</option>
-                          <option>Reasoning</option>
+                        <select class="form-control" name="subject_id" value="">
+                          <option value="1" name="English">English</option>
+                          <option value="2" name="G.K.">G.K.</option>
+                          <option value="3" name="Maths">Maths</option>
+                          <option value="4" name="Reasoning">Reasoning</option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label>Section Number</label>
-                        <input type="text" class="form-control" name="section_Number">
+                        <input type="number" class="form-control" name="section_Number" maxlength="5">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Section Name</label>
@@ -65,21 +65,19 @@
                     <form action="upload" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Subject</label>
-                        <select class="form-control" name="upload_subject_name">
-                          <option>English</option>
-                          <option>G.K.</option>
-                          <option>Maths</option>
-                          <option>Reasoning</option>
+                        <select class="form-control" name="upload_subject_number" id="selectSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value)">
+                          <option value="-1">Select Subject</option>
+                          <option value="1" name="English">English</option>
+                          <option value="2" name="G.K.">G.K.</option>
+                          <option value="3" name="Maths">Maths</option>
+                          <option value="4" name="Reasoning">Reasoning</option>
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Section</label>
-                        <select class="form-control" name="upload_section_number">
-                          <option>Section 1</option>
-                          <option>Section 2</option>
-                          <option>Section 3</option>
-                          <option>Section 4</option>
+                        <select class="form-control" id="selectSectionId" name="upload_section_number">
                         </select>
+                        <span id="loader"></span>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">Upload PDF</label>

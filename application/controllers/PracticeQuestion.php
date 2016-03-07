@@ -17,8 +17,8 @@ class PracticeQuestion extends CI_Controller
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '0';            
             $config['file_name'] = date("Y_m_d H:i:s").$_FILES['userfile']['name'];
-
             $this->load->library('upload', $config);
+            
             if ( ! $this->upload->do_upload('userfile'))
             {
               $error = array('error' => $this->upload->display_errors());

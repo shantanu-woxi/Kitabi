@@ -62,7 +62,7 @@
               <div class="englishWrap subjectData" id="engLessons">
                 <div class="panel panel-default">
                   <!-- Default panel contents -->
-                  <div class="panel-heading">ENGLISH <a href="javascript;void(0);" class="backToSubjects pull-right"><i class="fa fa-angle-left"></i>Back to Subjects</a></div>
+                  <div class="panel-heading">ENGLISH<a href="javascript;void(0);" class="backToSubjects pull-right"><i class="fa fa-angle-left"></i>Back to Subjects</a></div>
                   <div class="panel-body">
                     <p>
                       Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
@@ -71,46 +71,7 @@
                   <div class="lessonTableWrap">
                     <!-- Table -->
                     <table class="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 1</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 2</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
+                      <tbody id="englishContent">                        
                       </tbody>
                     </table>
                   </div>  
@@ -129,46 +90,7 @@
                   <div class="lessonTableWrap">
                     <!-- Table -->
                     <table class="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 1</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 2</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
+                      <tbody id="gkContent">                        
                       </tbody>
                     </table>
                   </div>  
@@ -187,46 +109,7 @@
                   <div class="lessonTableWrap">
                     <!-- Table -->
                     <table class="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 1</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 2</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
+                      <tbody id="mathsContent">
                       </tbody>
                     </table>
                   </div>  
@@ -245,46 +128,7 @@
                   <div class="lessonTableWrap">
                     <!-- Table -->
                     <table class="table table-striped">
-                      <tbody>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 1</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 2</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
-                        <tr>
-                          <td><a href="javascript:void(0);">Lesson 3</a></td>
-                        </tr>
+                      <tbody id="reasoningContent">
                       </tbody>
                     </table>
                   </div>  

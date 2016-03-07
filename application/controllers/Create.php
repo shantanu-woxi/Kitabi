@@ -33,25 +33,25 @@ class Create extends CI_Controller {
 
     public function createSections() {
         $this->load->view('header');
-        if (isset($_POST['subject_Names']) && isset($_POST['section_Number']) && isset($_POST['section_Name'])) {
-            $subject_Names = $_POST['subject_Names'];
+        if (isset($_POST['subject_id']) && isset($_POST['section_Number']) && isset($_POST['section_Name'])) {
+            $subject_id = $_POST['subject_id'];
             $index_Number = $_POST['section_Number'];
             $section_Name = $_POST['section_Name'];
 
             /* to get the id of subject selected from view */
-            $subject_Names = $_POST['subject_Names'];
-            $this->load->model('SubjectHandling');
-            $subjectID = $this->SubjectHandling->getSubjectId($subject_Names); //result contains id of subject. this is used to insert into table chapters.
+            // $subject_Names = $_POST['subject_Names'];
+            // $this->load->model('SubjectChapter');
+            // $subjectID = $this->SubjectChapter->getSubjectId($subject_Names); //result contains id of subject. this is used to insert into table chapters.
 
             $data = array(
-                'sid' => $subjectID,
+                'sid' => $subject_id,
                 'index_no' => $index_Number,
                 'name' => $section_Name
             );
 
             //to insert into chapters
-            $this->load->model('SubjectHandling');
-            $operation_result = $this->SubjectHandling->createSubject($data);
+            $this->load->model('SubjectChapter');
+            $operation_result = $this->SubjectChapter->createSection($data);
 
             return $this->load->view('admin');
             //redirect($temp_uri);
@@ -62,47 +62,41 @@ class Create extends CI_Controller {
     public function uploadToSections() {
         
         $this->load->view('header');  //not loading on first click
-        
-        //uploading file
-            $this->load->helper(array('form', 'url'));
-            $config['upload_path'] = 'assets/sections/'.$_POST['upload_subject_name'].'/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf';
-            $config['max_size']	= '0';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
 
+        $subjectID = $_POST['upload_subject_number'];
+        $chapterID = $_POST['upload_section_number'];
+        $this->load->model('SubjectChapter');
+        $subjectName = $this->SubjectChapter->getSubjectName($subjectID); //result contains name of subject. this is used to insert into table chapters.
+        //to fetch chapter name
+        $this->load->model('SubjectChapter');
+        $chapterName = $this->SubjectChapter->getChapterName($chapterID);
+        //uploading file
+        $this->load->helper(array('form', 'url'));
+        if (!empty($_POST['upload_subject_number']) && !empty($_POST['upload_section_number'])) {
+            $config['upload_path'] = 'assets/sections/'.$subjectName.'/';
+            $config['allowed_types'] = 'pdf';
+            $config['max_size']	= '0';
+            $_FILES['userfile']['name'] = $chapterName.".pdf";
+            $config['file_name'] = $_FILES['userfile']['name'];
             $this->load->library('upload', $config);
 
             if ( ! $this->upload->do_upload('userfile'))
             {
 		      $error = array('error' => $this->upload->display_errors());
-              //         print_r($error);
+                      // print_r($error);
+                      // exit();
                 //		$this->load->view('upload_form', $error);
             }
             else
             {
                     $data = array('upload_data' => $this->upload->data());
-            //               print_r('success');
+                    //       print_r($data);
+                    // exit();
                     //		$this->load->view('upload_success', $data);
             }
-            //print_r($_POST['userfile']);
+            //print_r($_POST['userfile']);            
+        
             
-        if (!empty($_POST['upload_subject_name']) && !empty($_POST['upload_section_number'])) 
-        {
-            $subject_name = $_POST['upload_subject_name'];
-            $index_no = $_POST['upload_section_number'];
-           
-            //to fetch subject id
-            $this->load->model('SubjectHandling');
-            $subjectID = $this->SubjectHandling->getSubjectId($subject_name); //result contains id of subject. this is used to insert into table chapters.
-            //to fetch chapter id
-            $this->load->model('SubjectHandling');
-            $chapterID = $this->SubjectHandling->getChapterId($index_no, $subjectID); //result contains id of subject. this is used to insert into table chapters.
-            
-            //to fetch chapter name
-            $this->load->model('SubjectHandling');
-            $chapterName = $this->SubjectHandling->getChapterName($chapterID);
-           
             //create data array
             $data = array(
                 'sid' => $subjectID,
@@ -111,12 +105,46 @@ class Create extends CI_Controller {
             );
 
             //insert into chapter_contents
-            $this->load->model('SubjectHandling');
-            $operation_result = $this->SubjectHandling->createChapterContents($data);
-            return $this->load->view('admin');
+            $this->load->model('SubjectChapter');
+            $operation_result = $this->SubjectChapter->createChapterContents($data);
+            return $this->load->view('admin/');
          
         }
         return $this->load->view('admin');
+    }
+
+    public function getChapters(){
+        if(!empty($_POST['subid'])){
+            $subject_id = $_POST['subid'];
+            $this->load->model('SubjectChapter');
+            $result = $this->SubjectChapter->getChapters($subject_id);           
+            $HTML="";
+            if(!empty($result)){
+            foreach($result as $list){
+                $HTML.="<option value='".$list['id']."'>".$list['name']."</option>";
+            }
+        }
+        echo $HTML;
+        }
+    }
+
+    public function getChapters(){
+        if(!empty($_POST['subid'])){
+            $subject_id = $_POST['subid'];
+            $this->load->model('SubjectChapter');
+            $subjectName = $this->SubjectChapter->getSubjectName($subject_id);
+            $result = $this->SubjectChapter->getChaptersList($subject_id);           
+            $HTML="";
+            if(!empty($result)){
+
+            foreach($result as $list){
+                $HTML.="<tr>
+                          <td><a href='assets/sections/"$subjectName."/".$list['chapter_location']."'>".$list['chapter_location']."</a></td>
+                        </tr>";
+            }
+        }
+        echo $HTML;
+        }
     }
 
 }

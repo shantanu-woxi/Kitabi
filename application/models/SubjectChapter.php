@@ -1,6 +1,6 @@
 <?php
 
-class SubjectHandling extends CI_Model 
+class SubjectChapter extends CI_Model 
 {
     function __construct()
     {
@@ -21,16 +21,16 @@ class SubjectHandling extends CI_Model
         else
             echo "here";
     }
-    function getSubjectId($name)
+    function getSubjectName($id)
     {
-        $query="select id from subjects where name='".$name."'";
-        $result_id=$this->db->query($query);
-        if($result_id->num_rows()>0)
+        $query="select name from subjects where id='".$id."'";
+        $result_name=$this->db->query($query);
+        if($result_name->num_rows()>0)
         {
-            return $result_id->result_array()[0]['id'];
+            return $result_name->result_array()[0]['name'];
         }
     }
-    function getChapterId($index_no,$subject_id)
+    function getChapterId($subject_id)
     {
         $query="select * from chapters where index_no=".$index_no." and sid=".$subject_id."";
         $result_id=$this->db->query($query);
@@ -41,9 +41,9 @@ class SubjectHandling extends CI_Model
     }
     function getChapterName($chapterId)
     {
-        $query="select name from chapters where id=".$chapterId."";
+        $query="select name from chapters where id='".$chapterId."'";
         $chapterName=  $this->db->query($query);
-        if($chapterName->num_rows()>0)
+        if(!empty($chapterName))
         {
             return $chapterName->result_array()[0]['name'];
         }
@@ -58,34 +58,36 @@ class SubjectHandling extends CI_Model
             return -1;
         
     }
-    function createSubject($data)
+
+    function createSection($data)
     {
         return $this->db->insert('chapters',$data);        
     }
+
     function createChapterContents($data)
     {
         return $this->db->insert('chapter_contents',$data);
     }
-    function getChapterInfo($data)
+
+    function getChapters($subject_id)
     {
-        $ch_names=array();
-        foreach($data as $x)
-        {
-            $this->db->where("sid",$x);
-            $chapterNames= $this->db->get("chapters");
-            array_push($ch_names,$chapterNames->result_array());
+        $query = "select * from chapters where sid=".$subject_id." ORDER BY `index_no` ASC";
+        $chapters = $this->db->query($query);
+        if($chapters->num_rows()>0)
+        {            
+            return $chapters->result_array();           
         }
-        return $ch_names;
+        return -1;
     }
-    function getChapterContents()//in case of where condition please provide cid and sid as an arguments
+    function getChapterContents($subject_id )//in case of where condition please provide cid and sid as an arguments
     {
 //        $query="select * from chapter_contents where sid=".$sid." and cid=".$cid."";
 //        $content_details=$this->db->query($query);
 //        return $content_details;
         
           //getting all data
-          $query="select * from chapter_contents";
-          $content_details=$this->db->query($query);
+          $query="select * from chapter_contents where sid=".$subject_id." ORDER BY `index_no` ASC";
+          $content_details = $this->db->query($query);
           return $content_details;
     }
 }
