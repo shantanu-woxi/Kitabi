@@ -7,13 +7,10 @@
             <file>file:/var/www/html/Kitabi/application/views/header.php</file>
             <file>file:/var/www/html/Kitabi/application/views/student_dashboard.php</file>
             <file>file:/var/www/html/Kitabi/application/views/index.php</file>
-            <file>file:/var/www/html/Kitabi/application/config/autoload.php</file>
-            <file>file:/var/www/html/Kitabi/index.php</file>
-            <file>file:/var/www/html/Kitabi/application/models/User.php</file>
+            <file>file:/var/www/html/Kitabi/application/config/config.php</file>
+            <file>file:/var/www/html/Kitabi/application/controllers/Create.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/Authentication.php</file>
-            <file>file:/var/www/html/Kitabi/.htaccess</file>
-            <file>file:/var/www/html/Kitabi/application/controllers/Welcome.php</file>
-            <file>file:/var/www/html/Kitabi/application/views/contact.php</file>
+            <file>file:/var/www/html/Kitabi/application/models/SubjectChapter.php</file>
             <file>file:/var/www/html/Kitabi/application/views/admin.php</file>
         </group>
     </open-files>
