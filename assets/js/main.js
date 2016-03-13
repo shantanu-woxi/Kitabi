@@ -33,22 +33,6 @@ $(document).ready(function(){
   // dashboardmenu height
   var dashboardmenuHeight = $(window).height() - ($(".welcomeStrip").height() + $(".header").height()); 
   $(".sidebarNav").height(dashboardmenuHeight);
-
-  // function loadChapters(subId){
-  //   var dataString = 'subId ='+ subId;
-  //   $("#loader").show();
-  //     $("#loader").fadeIn(400).html('Please wait... <img src="assets/images/loading.gif" />');
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "get-chapters",
-  //     data: dataString,
-  //     cache: false,
-  //     success: function(result){
-  //       $("#loader").hide(); 
-  //       $("#selectSectionId").html(result);  
-  //     }
-  //   });
-  // }
 });
 var hideSubjectWrap = function() {
   $(".subjectsWrap").hide();
@@ -57,18 +41,28 @@ var showSubjectWrap = function() {
   $(".subjectsWrap").show();
 }
 
-var loadChapters = function (subId){
-  console.log('into loadChapters');
+var loadChapters = function (subId, rType)
+{
+  console.log('laxdeep');
   $("#loader").show();
-    $("#loader").fadeIn(400).html('Please wait... <img src="assets/images/loading.gif" />');
+  $("#loader").fadeIn(400).html('Please wait... <img src="assets/images/loading.gif" />');
   $.ajax({
     type: "POST",
     url: "get-chapters",
     data:{subid: subId},
     cache: false,
     success: function(result){
-      $("#loader").hide(); 
-      $("#selectSectionId").html(result);  
+      if(rType=="upload")
+      {
+      
+          $("#loader").hide(); 
+          $("#selectSectionId").html(result);  
+      }
+      else if(rType=="section_test")
+      {
+          $("#test_loader").hide(); 
+          $("#selectTestSectionId").html(result);  
+      }
     }
   });
 }
@@ -97,4 +91,15 @@ var getChaptersList = function (subId){
       } 
     }
   });
+}
+
+var displayOptionType = function(questionNumber, type){
+    if(type == 'text'){
+       $("#question"+questionNumber).parents('.form-group').nextAll(".text-block:first").show();
+       $("#question"+questionNumber).parents('.form-group').nextAll(".image-block:first").hide();
+    }else{       
+       $("#question"+questionNumber).parents('.form-group').nextAll(".image-block:first").show();
+       $("#question"+questionNumber).parents('.form-group').nextAll(".text-block:first").hide();
+    }
+    
 }

@@ -1,3 +1,5 @@
+
+
 <html>
   <head>
     <meta charset="UTF-8">
@@ -6,6 +8,8 @@
     <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/sweetalert2.css" />
+    
   </head>
   <body>
     <div class="header">
@@ -32,7 +36,7 @@
                 <?php if(empty($this->session->userdata['id'])){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
-                     <a class="logoutLink logoutHref" href="logout">Logout</a>
+             <a class="logoutLink logoutHref" href="logout">Logout</a>
                 <?php }?>
                     <div class="loignForm">
                         <form action="dashboard" method="post">
@@ -68,8 +72,11 @@
                     <li><a href="welcome#coursesOffered">Courses Offered</a></li>
                     <li><a href="practice-questions">Practice Questions</a></li>
                     <li><a href="contact">Contact Us</a></li>
-                    <li><a href="aboutus">About Us</a></li>                    
+                    <li><a href="aboutus">About Us</a></li>
                   </ul>
+                    <?php if($this->session->flashdata('flashError')):?>
+                <p class='flashMsg flashError'> <?=$this->session->flashdata('flashError')?> </p>
+                <?php endif?>
                 </div>
               </div>
             </div>

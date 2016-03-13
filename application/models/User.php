@@ -16,13 +16,13 @@ class User extends CI_Model
             $query="select * from users where email_id='".$email."' and password='".$pass."'";
             $result=$this->db->query($query);
             foreach ($result->result() as $x)
-            {
-                $userData=array('id'=>'1','fname'=>$x->first_name , 'lname'=> $x->last_name, 'role'=>$x->role);
-                $this->load->library('session');
-                $this->load->helper('url');
-                $this->session->set_userdata($userData);
-                $id=$this->session->userdata('id');
-            }
+                {
+                    $userData=array('id'=>$x->id,'fname'=>$x->first_name , 'lname'=> $x->last_name, 'role'=>$x->role);
+                    $this->load->library('session');
+                    $this->load->helper('url');
+                    $this->session->set_userdata($userData);
+                    $id=$this->session->userdata('id');
+                }
             if($result->num_rows()>0)
             {
                 return 1;

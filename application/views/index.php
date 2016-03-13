@@ -1,4 +1,13 @@
-    <div class="banner">
+<?php
+if(empty($this->session->userdata['id']))
+{
+    ?>
+<script>sweetAlert("login failed","mkdfv","error");</script>
+    <?php
+}
+
+?>
+<div class="banner">
       <div class="">
         <div class="cycle-slideshow"
           data-cycle-timeout=4000
@@ -57,7 +66,7 @@
                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">English</a></li>
                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Maths</a></li>
                 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">GK</a></li>
-                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Reasoning</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Reasoning</a>
               </ul>
 
               <!-- Tab panes -->
@@ -260,7 +269,8 @@
     <script type="text/javascript" src="assets/js/cycle.js"></script>
     <script type="text/javascript" src="assets/js/cycle-tiles.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-
+    <script src="assets/js/sweetalert2.min.js"></script>
+    
   </body>
 
 </html>

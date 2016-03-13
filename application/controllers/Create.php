@@ -128,7 +128,8 @@ class Create extends CI_Controller {
         }
     }
 
-    public function getChapters(){
+    public function getChaptersList()
+    {
         if(!empty($_POST['subid'])){
             $subject_id = $_POST['subid'];
             $this->load->model('SubjectChapter');
@@ -139,13 +140,15 @@ class Create extends CI_Controller {
 
             foreach($result as $list){
                 $HTML.="<tr>
-                          <td><a href='assets/sections/"$subjectName."/".$list['chapter_location']."'>".$list['chapter_location']."</a></td>
+                          <td><a href='assets/sections/".$subjectName."/".$list['chapter_location']."'>".$list['chapter_location']."</a></td>
                         </tr>";
             }
         }
         echo $HTML;
         }
     }
+    
+    
 
 }
 
