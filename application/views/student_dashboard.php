@@ -70,7 +70,7 @@
                   </div>
                   <div class="lessonTableWrap">
                     <!-- Table -->
-                    <table class="table table-striped">
+                    <table class="table">
                       <tbody id="englishContent">                        
                       </tbody>
                     </table>
@@ -89,7 +89,7 @@
                   </div>
                   <div class="lessonTableWrap">
                     <!-- Table -->
-                    <table class="table table-striped">
+                    <table class="table">
                       <tbody id="gkContent">                        
                       </tbody>
                     </table>
@@ -108,7 +108,7 @@
                   </div>
                   <div class="lessonTableWrap">
                     <!-- Table -->
-                    <table class="table table-striped">
+                    <table class="table">
                       <tbody id="mathsContent">
                       </tbody>
                     </table>
@@ -127,7 +127,7 @@
                   </div>
                   <div class="lessonTableWrap">
                     <!-- Table -->
-                    <table class="table table-striped">
+                    <table class="table">
                       <tbody id="reasoningContent">
                       </tbody>
                     </table>
@@ -143,9 +143,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    
   </body>
 
 </html>

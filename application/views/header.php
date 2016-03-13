@@ -8,10 +8,27 @@
     <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/sweetalert2.css" />
-    
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script src="assets/js/sweetalert-dev.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+    <?php if(!empty($this->session->flashdata('item'))){echo "<script>var message='".$this->session->flashdata('item')."';</script>";}else{echo "<script>var message=null;</script>";}?>
+    <script>
+      $(document).ready(function(){
+            if(message!=null){
+              swal({
+                title: message,
+                timer: 2000,
+                showConfirmButton: false
+              });
+            }
+      });
+    </script>
   </head>
   <body>
+
     <div class="header">
       <div class="topHeader clearfix">
         <div class="container">

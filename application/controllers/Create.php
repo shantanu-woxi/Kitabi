@@ -34,29 +34,23 @@ class Create extends CI_Controller {
     public function createSections() {
         $this->load->view('header');
         if (isset($_POST['subject_id']) && isset($_POST['section_Number']) && isset($_POST['section_Name'])) {
-            $subject_id = $_POST['subject_id'];
-            $index_Number = $_POST['section_Number'];
-            $section_Name = $_POST['section_Name'];
-
-            /* to get the id of subject selected from view */
-            // $subject_Names = $_POST['subject_Names'];
-            // $this->load->model('SubjectChapter');
-            // $subjectID = $this->SubjectChapter->getSubjectId($subject_Names); //result contains id of subject. this is used to insert into table chapters.
-
             $data = array(
-                'sid' => $subject_id,
-                'index_no' => $index_Number,
-                'name' => $section_Name
+                'sid' => $_POST['subject_id'],
+                'index_no' => $_POST['section_Number'],
+                'name' => $_POST['section_Name']
             );
-
             //to insert into chapters
             $this->load->model('SubjectChapter');
             $operation_result = $this->SubjectChapter->createSection($data);
-
-            return $this->load->view('admin');
-            //redirect($temp_uri);
+            if($operation_result==0){
+                $data['message']="<div class='alert alert-danger'><strong>Error!</strong> Section ".$_POST['section_Name']." already exsits.</div>";
+                return $this->load->view('admin',$data);
+            }
+            $data['message']="<div class='alert alert-success'><strong>Success!</strong> Section Created Successfully.</div>";
+            return $this->load->view('admin',$data);    
         }
-        return $this->load->view('admin');
+        $data['message']="<div class='alert alert-danger'><strong>Error!</strong> Failed to create section.</div>";
+        return $this->load->view('admin',$data);
     }
 
     public function uploadToSections() {
@@ -134,22 +128,20 @@ class Create extends CI_Controller {
             $subject_id = $_POST['subid'];
             $this->load->model('SubjectChapter');
             $subjectName = $this->SubjectChapter->getSubjectName($subject_id);
-            $result = $this->SubjectChapter->getChaptersList($subject_id);           
+            $result = $this->SubjectChapter->getChaptersList($subject_id);
+            
+            
             $HTML="";
             if(!empty($result)){
-
-            foreach($result as $list){
+                $i=0;
+            foreach($result->result_array() as $list){
                 $HTML.="<tr>
-                          <td><a href='assets/sections/".$subjectName."/".$list['chapter_location']."'>".$list['chapter_location']."</a></td>
+                          <td><a href='assets/sections/".$subjectName."/".$list['chapter_location']."'>".++$i.". ".$list['chapter_location']."</a></td>
                         </tr>";
             }
         }
         echo $HTML;
         }
     }
-    
-    
-
-}
-
+    }
 ?>

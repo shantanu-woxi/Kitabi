@@ -29,7 +29,12 @@ $(document).ready(function(){
     showSubjectWrap();
     return false;
   });
-
+  /*
+   * alert fadeout functions
+   */
+  setTimeout(function() {
+   $('.alert').fadeOut().text('')
+  }, 2000 );
   // dashboardmenu height
   var dashboardmenuHeight = $(window).height() - ($(".welcomeStrip").height() + $(".header").height()); 
   $(".sidebarNav").height(dashboardmenuHeight);

@@ -7,11 +7,17 @@
             <file>file:/var/www/html/Kitabi/application/controllers/SubInfoController.php</file>
             <file>file:/var/www/html/Kitabi/application/views/header.php</file>
             <file>file:/var/www/html/Kitabi/application/views/index.php</file>
+<<<<<<< HEAD
             <file>file:/var/www/html/Kitabi/application/controllers/CreateTest.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/Create.php</file>
             <file>file:/var/www/html/Kitabi/application/models/User.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/Authentication.php</file>
             <file>file:/var/www/html/Kitabi/application/models/SectionTest.php</file>
+=======
+            <file>file:/var/www/html/Kitabi/application/config/config.php</file>
+            <file>file:/var/www/html/Kitabi/application/controllers/Create.php</file>
+            <file>file:/var/www/html/Kitabi/application/controllers/Authentication.php</file>
+>>>>>>> upstream/master
             <file>file:/var/www/html/Kitabi/application/models/SubjectChapter.php</file>
             <file>file:/var/www/html/Kitabi/application/views/admin.php</file>
         </group>

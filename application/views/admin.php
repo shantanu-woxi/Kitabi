@@ -10,7 +10,7 @@
       <div class="sidebarNav">
         <div class="dashboardMenu">
           <ul class="nav nav-pills nav-stacked dashboardNav">
-            <li role="presentation" class="active"><a  href="#create" data-toggle="tab">Create Section</a></li>
+            <li role="presentation" class="active "><a  href="#create" data-toggle="tab">Create Section</a></li>
             <li role="presentation"><a  href="#uploads" data-toggle="tab">Upload Section</a></li>
             <li role="presentation"><a  href="#blogs" data-toggle="tab">Important Update</a></li>
             <li role="presentation"><a  href="#pracQuestion" data-toggle="tab">Practice Question</a></li>
@@ -29,6 +29,7 @@
         <div class="dashboardContent">
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="create">
+             <?php if(!empty($message) && $message!=''){echo $message;}?>
               <h2 class="dashboardTitles">Create Section</h2>
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
@@ -62,7 +63,7 @@
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
-                    <form action="upload" method="post" enctype="multipart/form-data">
+                    <form id="uploads-section" action="upload" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Subject</label>
                         <select class="form-control" name="upload_subject_number" id="selectSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value,'upload')">
@@ -95,7 +96,7 @@
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
-                    <form action="blog" method="post">
+                    <form id="important-update" action="blog" method="post">
                       <div class="form-group">
                         <label for="blogtitle">Important Update Title</label>
                         <input type="text" class="form-control" id="blogtitle" name="title">
@@ -115,7 +116,7 @@
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
                   <div class="createForm">
-                    <form action="store-practice-question" method="post" enctype="multipart/form-data">
+                    <form id="practice-questions" action="store-practice-question" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label for="blogtitle">Practice Question</label>
                         <input type="text" class="form-control" id="practice-question-title" name="title">
@@ -251,9 +252,58 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
   </body>
-
+<script>
+      $(document).ready( function(){
+         
+          $("#uploads-section").validate({
+          rules: 
+              {
+                upload_subject_number: 
+                {
+                  required: true,
+                },
+                upload_section_number: 
+                {
+                  required: true,
+                },
+                userfile: 
+                {
+                  required: true,
+                },
+              }
+            });    
+          $("#important-update").validate({
+            rules: 
+                {
+                  title: 
+                  {
+                    required: true,
+                  },
+                  description: 
+                  {
+                    required: true,
+                  }
+                }
+           });    
+          $("#practice-questions").validate({
+            rules: 
+                {
+                  title: 
+                  {
+                    required: true,
+                  },
+                  description: 
+                  {
+                    required: true,
+                  },
+                  userfile: 
+                  {
+                    required: true,
+                  }
+                }
+           });    
+            
+      });    
+    </script>
 </html>

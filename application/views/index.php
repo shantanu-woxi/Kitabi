@@ -264,13 +264,9 @@ if(empty($this->session->userdata['id']))
         <h6 class="text-center">Kitabee Education Services. All rights reserved.</h6>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/cycle.js"></script>
     <script type="text/javascript" src="assets/js/cycle-tiles.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script src="assets/js/sweetalert2.min.js"></script>
-    
+
   </body>
 
 </html>
