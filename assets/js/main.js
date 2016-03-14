@@ -60,13 +60,15 @@ var loadChapters = function (subId, rType)
       if(rType=="upload")
       {
       
-          $("#loader").hide(); 
-          $("#selectSectionId").html(result);  
+          $("#loader").hide();
+          $("#selectSectionId").html('<option value="-1">Select Section</option>');  
+          $("#selectSectionId").append(result);  
       }
       else if(rType=="section_test")
       {
-          $("#test_loader").hide(); 
-          $("#selectTestSectionId").html(result);  
+          $("#test_loader").hide();
+          $("#selectTestSectionId").html('<option value="-1">Select Section</option>');
+          $("#selectTestSectionId").append(result);  
       }
     }
   });
@@ -106,5 +108,48 @@ var displayOptionType = function(questionNumber, type){
        $("#question"+questionNumber).parents('.form-group').nextAll(".image-block:first").show();
        $("#question"+questionNumber).parents('.form-group').nextAll(".text-block:first").hide();
     }
+    
+}
+
+
+
+var getChapterTest=function(section_id){
+    
+    setInterval(function(){
+        var time=$('#section-timer i').html();
+        
+        var min_sec=time.split(":");
+        if(min_sec[0] > -1){
+            var min=min_sec[0];
+            var sec=min_sec[1];
+            
+            if(sec > 0){
+                sec=sec-1;
+            }
+            if(sec==0){
+               sec=59;
+               min=min-1;
+            }
+            
+            $('#section-timer i').html(min+":"+sec);
+        }
+        else{
+            $('#section-test').submit();
+        }
+    },1000);
+    $.ajax({
+    type: "POST",
+    url: "get-chapters-test",
+    data:{chapterid: section_id},
+    cache: false,
+    success: function(result){
+      $("#testData").empty();
+      if(result!=0){
+        $("#testData").html(result);
+      }else{
+         $("#testData").empty(); 
+      }
+    }
+  });
     
 }

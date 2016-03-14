@@ -2,6 +2,7 @@
 
 class CreateTest extends CI_Controller
 {
+    
     public function testData()
     {
         /*echo "<pre>";
@@ -35,10 +36,10 @@ class CreateTest extends CI_Controller
                 $option3="question".$i."_option3";
                 $option4="question".$i."_option4";
                 $optinsArray=array(
-                    'option1' => $option1,
-                    'option2'=>$option2,
-                    'option3'=>$option3,
-                    'option4'=>$option4
+                    'option1' => $_POST[$option1],
+                    'option2'=>$_POST[$option2],
+                    'option3'=>$_POST[$option3],
+                    'option4'=>$_POST[$option4]
                 );
                 $is_image=0;
             }
@@ -111,8 +112,107 @@ class CreateTest extends CI_Controller
             $temp='question_'.$i;
             $section_questions_id=$this->load->model($subject_id,$chapter_id,$_POST[$temp]);
         }
+        redirect("dashboard");
+    }
+    
+    public function showTest()
+    {
+        //$subject_id=1;
+        $chapter_id=$_POST['chapterid'];
+        $this->load->model('SectionTest');
+        $testData = $this->SectionTest->getSectionTest($chapter_id);
+//        print_r($testData);
+//        exit();
+        $HTML='';
+//        if(!empty($testData))
+        for($i=0;$i<sizeof($testData);$i++)
+        {
+            $question_id= $testData[$i]['id'];
+            $decode_json_var= json_decode($testData[$i]['options']);
+           // echo "answer:".$testData[$i]['answer'];
+            $HTML.="<h3 >".$testData[$i]['question']."</h3><input type='hidden' name='question_id".($i+1)."' value='".$question_id."' class='hide'><ul class='list-unstyled'>".
+                                        "<li><div class='col-xs-1'>A:</div><div class='width-11'>".$decode_json_var->option1."</div></li>".
+                                        "<li><div class='col-xs-1'>B:</div><div class='width-11'>".$decode_json_var->option2."</div></li>".
+                                        "<li><div class='col-xs-1'>C:</div><div class='width-11'>".$decode_json_var->option3."</div></li>".
+                                        "<li><div class='col-xs-1'>D:</div><div class='width-11'>".$decode_json_var->option4."</div></li></ul>".
+                                        "<div class='form-group'>Answer: &nbsp;&nbsp; ".
+                                        "    <label class='radio-inline'>".
+                                        "        <input type='radio' name='answer".($i+1)."' value= 'question".($i+1)."_option1' >A".
+                                        "    </label>".
+                                        "    <label class='radio-inline'>".
+                                        "        <input type='radio' name='answer".($i+1)."' value= 'question".($i+1)."_option2'>B".
+                                        "    </label>".
+                                        "    <label class='radio-inline'>".
+                                        "        <input type='radio' name='answer".($i+1)."' value= 'question".($i+1)."_option3' >C".
+                                         "   </label>".
+                                        "    <label class='radio-inline'>".
+                                         "       <input type='radio' name='answer".($i+1)."' value= 'question".($i+1)."_option4'>D".
+                                         "       <input type='radio' name='answer".($i+1)."' class='hide' value= 'other' checked>".
+                                         "   </label>".
+                                        "</div>";
+        }
+        echo $HTML;
+    }
+    public function saveTestData()
+    {
+        //print_r($_POST);
+        //exit();
+        $this->load->library('session');
+        $user_id=$this->session->userdata['id'];
         
+        $subject_id=$_POST['upload_subject_number'];
+        $chapter_id=$_POST['upload_section_number'];
         
+        $count=0;
+        for($t=1;$t<=10;$t++)
+        {
+            
+            $question=$_POST['question_id'.$t];
+            //fetch answer from qid
+            $this->load->model('SectionTest');
+             $isanswer=$this->SectionTest->getAnswer($question);
+            // echo "<pre>answer is: ";
+           // print_r($isanswer->result_array());
+            $user_answer=$_POST['answer'.$t];
+            if($user_answer==$isanswer->result_array()[0]['answer'])
+            {
+                $is_correct=1;
+                $count++;
+            }
+            else{
+                $is_correct=0;
+            }
+            
+            $data=array(
+            'user_id'=>$user_id,
+            'subject_id'=>$subject_id,
+            'section_id'=>$chapter_id,
+            'question_id'=>$question,
+            'user_answer'=>$user_answer,
+            'is_correct'=>$is_correct
+            );
+            //print_r($data);
+           
+            $this->load->model('SectionTest');
+            $result=$this->SectionTest->saveSectionTestData($data);
+            
+        }
+        $this->session->set_flashdata('item', 'Test Submitted Successfully \n Your Score: '.$count);
+        redirect(base_url()."dashboard");
+        /*
+        if($result)
+        {
+            //operation successful message
+        }
+        else
+        {
+            //operation unsuccessful message
+        }*/
+    }
+    public function mytest()
+    {
+        $this->load->model('SectionTest');
+        echo $this->SectionTest->mytestdata();
     }
 }
 

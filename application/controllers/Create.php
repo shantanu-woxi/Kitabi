@@ -117,8 +117,10 @@ class Create extends CI_Controller {
             foreach($result as $list){
                 $HTML.="<option value='".$list['id']."'>".$list['name']."</option>";
             }
-        }
-        echo $HTML;
+            
+            echo $HTML;
+            }
+        return 0;
         }
     }
 
