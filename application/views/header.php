@@ -1,18 +1,16 @@
-
-
 <html>
   <head>
     <meta charset="UTF-8">
     <title>Title of the document</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
-    <script src="assets/js/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/sweetalert.css">
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
+    <script src="<?php echo base_url();?>assets/js/sweetalert-dev.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
     <?php if(!empty($this->session->flashdata('item'))){echo "<script>var message='".$this->session->flashdata('item')."';</script>";}else{echo "<script>var message=null;</script>";}?>
     <script>
@@ -53,7 +51,7 @@
                 <?php if(empty($this->session->userdata['id'])){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
-             <a class="logoutLink logoutHref" href="logout">Logout</a>
+                     <a class="logoutLink logoutHref" href="logout">Logout</a>
                 <?php }?>
                     <div class="loignForm">
                         <form action="dashboard" method="post">
@@ -81,19 +79,16 @@
           <div class="row">
             <div class="col-md-12">
               <div class="clearfix navWrapper">
-                <a class="brand pull-left" href="welcome"><img src="assets/images/logo.jpg"></a>
+                <a class="brand pull-left" href="welcome"><img src="<?php echo base_url();?>assets/images/logo.jpg"></a>
                 <div class="logins pull-right">
                   <ul class="navs list-unstyled list-inline">
-                      <li><a class="home" href="welcome"><i class="fa fa-home"></i></a></li>
-                    <li><a href="dashboard">Dashboard</a></li>
-                    <li><a href="welcome#coursesOffered">Courses Offered</a></li>
-                    <li><a href="practice-questions">Practice Questions</a></li>
-                    <li><a href="contact">Contact Us</a></li>
-                    <li><a href="aboutus">About Us</a></li>
+                      <li><a class="home" href="<?php echo base_url();?>welcome"><i class="fa fa-home"></i></a></li>
+                    <li><a href="<?php echo base_url();?>dashboard">Dashboard</a></li>
+                    <li><a href="<?php echo base_url();?>welcome#coursesOffered">Courses Offered</a></li>
+                    <li><a href="<?php echo base_url();?>practice-questions">Practice Questions</a></li>
+                    <li><a href="<?php echo base_url();?>contact">Contact Us</a></li>
+                    <li><a href="<?php echo base_url();?>aboutus">About Us</a></li>                    
                   </ul>
-                    <?php if($this->session->flashdata('flashError')):?>
-                <p class='flashMsg flashError'> <?=$this->session->flashdata('flashError')?> </p>
-                <?php endif?>
                 </div>
               </div>
             </div>

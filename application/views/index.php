@@ -47,7 +47,7 @@ if(empty($this->session->userdata['id']))
                 if(!empty($blog_title)){
                   foreach($blog_title as $title){ ?>
                   <li>
-                  <a href="importantupdate"><?php echo $title;?></a>
+                  <a href="important-update"><?php echo $title;?></a>
                  </li>
                  <?php
                   }

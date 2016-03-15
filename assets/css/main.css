@@ -420,7 +420,8 @@ h1,h2,h3,h4,h5,h6{
 }
 /*dashboard starts*/
 .dashboardWrap{
-    position: absolute;
+    position: relative;
+    padding-right: 2%;
     width: 100%;
     height: 100%;
 }
@@ -510,6 +511,9 @@ h1,h2,h3,h4,h5,h6{
    height: 300px;
    width: 100%;
 }
+.bottom-60{
+    height: 60px;
+}
 .display-element
 {
     display: block;
@@ -521,4 +525,3 @@ h1,h2,h3,h4,h5,h6{
 .width-11{
     width: 91.66666667% !important;
 }
-    
