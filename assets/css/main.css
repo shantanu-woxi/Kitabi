@@ -514,3 +514,14 @@ h1,h2,h3,h4,h5,h6{
 .bottom-60{
     height: 60px;
 }
+.display-element
+{
+    display: block;
+}
+.hide-element,.text-block,.image-block
+{
+    display: none;
+}
+.width-11{
+    width: 91.66666667% !important;
+}

@@ -117,12 +117,15 @@ class Create extends CI_Controller {
             foreach($result as $list){
                 $HTML.="<option value='".$list['id']."'>".$list['name']."</option>";
             }
-        }
-        echo $HTML;
+            
+            echo $HTML;
+            }
+        return 0;
         }
     }
 
-    public function getChaptersList(){
+    public function getChaptersList()
+    {
         if(!empty($_POST['subid'])){
             $subject_id = $_POST['subid'];
             $this->load->model('SubjectChapter');
@@ -142,7 +145,5 @@ class Create extends CI_Controller {
         echo $HTML;
         }
     }
-
-}
-
+    }
 ?>

@@ -68,3 +68,6 @@ $route['upload'] = 'create/uploadToSections';
 $route['store-practice-question'] = 'practiceQuestion/store';
 $route['get-chapters'] = 'create/getChapters';
 $route['get-chapters-list'] = 'create/getChaptersList';
+$route['createTest'] = 'createTest/testData';
+$route['get-chapters-test'] = 'createTest/showTest';
+$route['save-chapters-test'] = 'createTest/saveTestData';

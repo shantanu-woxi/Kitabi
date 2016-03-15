@@ -1,65 +1,92 @@
-    <div class="welcomeStrip">
-      <h4>Welcome to Dashboard</h4>
-    </div>
-    <div class="container-fluid dashboardWrap">
-      <div class="sidebarNav">
+<div class="welcomeStrip">
+    <h4>Welcome to Dashboard</h4>
+</div>
+<div class="container-fluid dashboardWrap">
+    <div class="sidebarNav">
         <div class="dashboardMenu">
-          <ul class="nav nav-pills nav-stacked dashboardNav">
-            <li role="presentation"><a  href="#home" data-toggle="tab">Start</a></li>
-            <li role="presentation"><a  href="#1" data-toggle="tab">Profile</a></li>
-            <li role="presentation" class="active"><a  href="#2" data-toggle="tab">Subjects</a></li>
-            <!-- <li role="presentation"><a  href="#3" data-toggle="tab">Tests</a></li> -->
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a data-toggle="tab" href="#submenu3">Submenu 1-1</a></li>
-                <li><a data-toggle="tab" href="#submenu4">Submenu 1-2</a></li>
-                <li><a data-toggle="tab" href="#submenu5">Submenu 1-3</a></li>
-              </ul>
-            </li>
-            <li role="presentation"><a  href="#4" data-toggle="tab">Profile</a></li>
-            <li role="presentation"><a  href="#5" data-toggle="tab">Messages</a></li>
-          </ul>
+            <ul class="nav nav-pills nav-stacked dashboardNav">
+                <li role="presentation" class="active"><a href="#2" data-toggle="tab">Subjects</a></li>
+                <!-- <li role="presentation"><a  href="#3" data-toggle="tab">Tests</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a data-toggle="tab" href="#sectionTest">Section Tests</a></li>
+                        <li><a data-toggle="tab" href="#fullLength">Full Length Tests</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="row">
+    </div>
+    <div class="row">
         <div class="dashboardContent">
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade" id="home">
-              <h2 class="dashboardTitles">Dashboard</h2>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="1">2</div>
-            <div role="tabpanel" class="tab-pane fade" id="submenu3">submenu3</div>
-            <div role="tabpanel" class="tab-pane fade" id="submenu4">submenu4</div>
-            <div role="tabpanel" class="tab-pane fade" id="submenu5">submenu5</div>
-            <div role="tabpanel" class="tab-pane fade in active" id="2">
-              <div class="subjectsWrap">  
-                <h2 class="dashboardTitles">Subjects</h2>
-                <div class="row text-center subjectsListLinks">
-                  <div class="col-xs-6 subImgContainer">
-                    <a href="javascript:void(0);" id="engcall">
-                      <img src="assets/images/slate-english.png">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 subImgContainer">
-                    <a href="javascript:void(0);" id="gkcall">
-                      <img src="assets/images/slate-gk.png">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 subImgContainer">
-                    <a href="javascript:void(0);" id="mathscall">
-                      <img src="assets/images/slate-maths.png">
-                    </a>
-                  </div>
-                  <div class="col-xs-6 subImgContainer">
-                    <a href="javascript:void(0);" id="reasoncall">
-                      <img src="assets/images/slate-reasoning.png">
-                    </a>
-                  </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade" id="home">
+                    <h2 class="dashboardTitles">Dashboard</h2>
                 </div>
-              </div>
-              <div class="englishWrap subjectData" id="engLessons">
+                <div role="tabpanel" class="tab-pane fade" id="1">2</div>
+                <div role="tabpanel" class="tab-pane fade" id="sectionTest">
+                    <h2 class="dashboardTitles">Section Test <label id="section-timer" class="pull-right">Timer <i class="color-red">01:00</i> Minute</label></h2>
+                   
+                    <div class="row">    
+                        <div class="col-xs-6 col-xs-offset-2">    
+                            <div class="createForm">
+                                <form id='section-test' action="save-chapters-test" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Select Subject</label>
+                                        <select class="form-control" name="upload_subject_number" id="selectTestSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value, 'section_test')">
+                                            <option value="-1">Select Subject</option>
+                                            <option value="1" name="English">English</option>
+                                            <option value="2" name="G.K.">G.K.</option>
+                                            <option value="3" name="Maths">Maths</option>
+                                            <option value="4" name="Reasoning">Reasoning</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Select Section</label>
+                                        <select class="form-control" id="selectTestSectionId" name="upload_section_number" onchange="getChapterTest(this.options[this.selectedIndex].value)">
+                                        </select>
+                                        <span id="test_loader"></span>
+                                    </div>
+                                    <div id="testData">
+                                        
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="fullLength">
+                    <h2 class="dashboardTitles">Full Length Tests</h2>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in active" id="2">
+                    <div class="subjectsWrap">  
+                        <h2 class="dashboardTitles">Subjects</h2>
+                        <div class="row text-center subjectsListLinks">
+                            <div class="col-xs-6 subImgContainer">
+                                <a href="javascript:void(0);" id="engcall">
+                                    <img src="assets/images/slate-english.png">
+                                </a>
+                            </div>
+                            <div class="col-xs-6 subImgContainer">
+                                <a href="javascript:void(0);" id="gkcall">
+                                    <img src="assets/images/slate-gk.png">
+                                </a>
+                            </div>
+                            <div class="col-xs-6 subImgContainer">
+                                <a href="javascript:void(0);" id="mathscall">
+                                    <img src="assets/images/slate-maths.png">
+                                </a>
+                            </div>
+                            <div class="col-xs-6 subImgContainer">
+                                <a href="javascript:void(0);" id="reasoncall">
+                                    <img src="assets/images/slate-reasoning.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="englishWrap subjectData" id="engLessons">
                 <div class="panel panel-default">
                   <!-- Default panel contents -->
                   <div class="panel-heading">ENGLISH<a href="javascript;void(0);" class="backToSubjects pull-right"><i class="fa fa-angle-left"></i>Back to Subjects</a></div>
