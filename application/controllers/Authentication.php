@@ -22,6 +22,7 @@ class Authentication extends CI_Controller {
             if (strlen($pass) >= 6) {
                 $this->load->model("user");
                 $result = $this->user->login($email, $pass);
+
                 if ($result) {
                     if ($this->session->userdata('role') == 'admin') {
                         $this->session->set_flashdata('item', 'Login Successfull');
@@ -32,15 +33,29 @@ class Authentication extends CI_Controller {
                     $this->load->view('header');
                     return $this->load->view('student_dashboard');
                 }
+                else//if login failed
+                {
+                    $this->load->view('header');
+                   // $this->session->set_flashdata('flashError', 'Login Error!!');
+                    return $this->load->view('index');
+                    
+                }
             }
-        } else {
-            
-            if (!empty($this->session->userdata('role')) && $this->session->userdata('role')!='') {
-               $this->load->view('header');
-               if ($this->session->userdata('role') == 'admin') {
-                        return $this->load->view('admin');
+        }
+        else//check session is already set or not
+        {            
+            if(isset($this->session->userdata))
+            {
+                $this->load->view('header');
+                if($this->session->userdata('role')=='admin')
+                    { 
+                        return $this->load->view('admin'); 
+
                     }
-                    return $this->load->view('student_dashboard');
+                    elseif ($this->session->userdata('role')=='user')
+                    {
+                        return $this->load->view('student_dashboard');
+                    }                    
             }
             $this->session->set_flashdata('item', 'Need to Login first');
             redirect(base_url());

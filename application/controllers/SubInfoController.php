@@ -60,7 +60,8 @@ class SubInfoController extends CI_Controller
         }
     }
 
-    function getChapters(){
+    function getChapters()
+    {
         $this->load->model("SubjectChapter");
     }
 }

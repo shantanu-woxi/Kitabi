@@ -66,7 +66,7 @@
                     <form id="uploads-section" action="upload" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Select Subject</label>
-                        <select class="form-control" name="upload_subject_number" id="selectSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value)">
+                        <select class="form-control" name="upload_subject_number" id="selectSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value,'upload')">
                           <option value="-1">Select Subject</option>
                           <option value="1" name="English">English</option>
                           <option value="2" name="G.K.">G.K.</option>
@@ -138,6 +138,112 @@
             </div>
             <div role="tabpanel" class="tab-pane fade" id="sectionTest">
               <h2 class="dashboardTitles">Section Test</h2>
+              <div class="row">    
+                <div class="col-xs-6 col-xs-offset-2">    
+                  <div class="createForm">
+              <form action="createTest" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Select Subject</label>
+                        <select class="form-control" name="upload_subject_number" id="selectTestSubjectId" onchange="loadChapters(this.options[this.selectedIndex].value,'section_test')">
+                          <option value="-1">Select Subject</option>
+                          <option value="1" name="English">English</option>
+                          <option value="2" name="G.K.">G.K.</option>
+                          <option value="3" name="Maths">Maths</option>
+                          <option value="4" name="Reasoning">Reasoning</option>
+                        </select>
+                      </div>
+                  
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Select Section</label>
+                        <select class="form-control" id="selectTestSectionId" name="upload_section_number">
+                        </select>
+                        <span id="test_loader"></span>
+                      </div>
+                  <?php  for($i=1;$i<=10;$i++) { ?>
+                      <div class="form-group">
+                        <label for="question">Question No.<?php echo $i;?></label>
+                        <input type="text" class="form-control" id="question<?php echo $i;?>" name="question_<?php echo $i;?>">
+                      </div>
+                      <div class="form-group">Answer Type: &nbsp;&nbsp;
+                        <label class="radio-inline">
+                         <input type="radio" name="anstype<?php echo $i;?>" value="Text" onchange="displayOptionType(<?php echo $i;?>, 'text')">Text
+                       </label>
+                       <label class="radio-inline">
+                           <input type="radio" name="anstype<?php echo $i;?>" value="Image" onchange="displayOptionType(<?php echo $i;?>, 'image')">Image
+                       </label>
+                      </div>
+                  <div class="text-block">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="Option<?php echo $i.'1';?>" class="col-xs-1">A</label>
+                            <input type="text" class="form-control width-11" id="Option<?php echo $i.'1';?>" name="question<?php echo $i;?>_option<?php echo 1;?>">
+                        </div>                        
+                        <div class="form-group">
+                            <label class="col-xs-1" for="Option<?php echo $i.'2';?>">B</label>
+                          <input type="text" class="form-control width-11" id="Option<?php echo $i.'2';?>" name="question<?php echo $i;?>_option<?php echo 2;?>">
+                        </div>                          
+                        <div class="form-group">
+                            <label class="col-xs-1" for="Option<?php echo $i.'3';?>">C</label>
+                          <input type="text" class="form-control width-11" id="Option<?php echo $i.'3';?>" name="question<?php echo $i;?>_option<?php echo 3;?>">
+                        </div>                          
+                        <div class="form-group">
+                          <label class="col-xs-1" for="Option<?php echo $i.'4';?>">D</label>
+                          <input type="text" class="form-control width-11" id="Option<?php echo $i.'4';?>" name="question<?php echo $i;?>_option<?php echo 4;?>">
+                        </div>
+                        <div class="form-group">Answer:&nbsp;&nbsp; 
+                            <label class="radio-inline">
+                             <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 1;?>" >A
+                           </label>
+                           <label class="radio-inline">
+                               <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 2;?>" >B
+                           </label>
+                           <label class="radio-inline">
+                             <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 3;?>" >C
+                           </label>
+                           <label class="radio-inline">
+                               <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 4;?>" >D
+                           </label>
+                        </div>
+                    </div>    
+                  </div>                  
+                  <div class="image-block">
+                      <div class="form-group">
+                        <label class="col-xs-1" for="optionFile<?php echo $i.'1';?>">A</label>
+                        <input type="file" class="width-11" id="questionimage<?php echo $i.'1';?>" name="question<?php echo $i;?>_option<?php echo 1;?>" multiple="multiple">                        
+                      </div>
+                      <div class="form-group">
+                        <label class="col-xs-1" for="optionFile<?php echo $i.'2';?>">B</label>
+                        <input type="file" class="width-11" id="quesimage<?php echo $i.'2';?>" name="question<?php echo $i;?>_option<?php echo 2;?>" multiple="multiple">                        
+                      </div>
+                      <div class="form-group">
+                        <label class="col-xs-1" for="optionFile<?php echo $i.'3';?>">C</label>
+                        <input class="width-11" type="file" id="quesimage<?php echo $i.'3';?>" name="question<?php echo $i;?>_option<?php echo 3;?>" multiple="multiple">                        
+                      </div>
+                      <div class="form-group">
+                          <label class="col-xs-1" for="optionFile<?php echo $i.'4';?>">D</label>
+                        <input type="file" class="width-11" id="quesimage<?php echo $i.'4';?>" name="question<?php echo $i;?>_option<?php echo 4;?>" multiple="multiple">                        
+                      </div>
+                      <div class="form-group">Answer: &nbsp;&nbsp; 
+                        <label class="radio-inline">
+                         <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 1;?>" >A
+                       </label>
+                       <label class="radio-inline">
+                           <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 2;?>">B
+                       </label>
+                       <label class="radio-inline">
+                         <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 3;?>" >C
+                       </label>
+                       <label class="radio-inline">
+                           <input type="radio" name="answer_<?php echo $i;?>" value= "question<?php echo $i;?>_option<?php echo 4;?>">D
+                       </label>
+                      </div>
+                  </div>
+                  <?php } ?>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                      </div>
+                </div>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="fullTest">
               <h2 class="dashboardTitles">Full Test</h2>
