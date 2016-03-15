@@ -32,6 +32,8 @@ class Authentication extends CI_Controller {
                     $this->load->view('header');
                     return $this->load->view('student_dashboard');
                 }
+                 $this->session->set_flashdata('item', 'Wrong User Name password');
+                 redirect(base_url());
             }
         } else {
             

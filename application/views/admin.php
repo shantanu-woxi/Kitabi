@@ -10,10 +10,10 @@
       <div class="sidebarNav">
         <div class="dashboardMenu">
           <ul class="nav nav-pills nav-stacked dashboardNav">
-            <li role="presentation" class="active "><a  href="#create" data-toggle="tab">Create Section</a></li>
-            <li role="presentation"><a  href="#uploads" data-toggle="tab">Upload Section</a></li>
-            <li role="presentation"><a  href="#blogs" data-toggle="tab">Important Update</a></li>
-            <li role="presentation"><a  href="#pracQuestion" data-toggle="tab">Practice Question</a></li>
+            <li role="presentation"  class="active "><a  href="#create" data-toggle="tab">Create Section</a></li>
+            <li role="presentation" ><a  href="#uploads" data-toggle="tab">Upload Section</a></li>
+            <li role="presentation" ><a href="#blogs" data-toggle="tab">Important Update</a></li>
+            <li role="presentation" ><a href="#pracQuestion" data-toggle="tab">Practice Question</a></li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
               <span class="caret"></span></a>
@@ -59,6 +59,7 @@
               </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="uploads">
+                 <?php if(!empty($message) && $message!=''){echo $message;}?>
               <h2 class="dashboardTitles">Uploads Section</h2>
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
@@ -92,6 +93,7 @@
               </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="blogs">
+                 <?php if(!empty($message) && $message!=''){echo $message;}?>
               <h2 class="dashboardTitles">Important Update</h2>
               <div class="row">    
                 <div class="col-xs-6 col-xs-offset-2">    
@@ -103,7 +105,7 @@
                       </div>
                       <div class="form-group">
                         <label for="blogtitle">Description</label>
-                        <textarea class="form-control" rows="3" name="description"></textarea>
+                        <textarea class="form-control" rows="8" name="description"></textarea>
                       </div>                      
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -123,7 +125,7 @@
                       </div>
                       <div class="form-group">
                         <label for="blogtitle">Description</label>
-                        <textarea class="form-control" rows="3" id="practice-question-description" name="description"></textarea>
+                        <textarea class="form-control" rows="8" id="practice-question-description" name="description"></textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">Upload Image</label>
@@ -146,10 +148,69 @@
         </div>
       </div>
     </div>
-  </body>
-<script>
+  <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 footerAddress">
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-map-marker"></i>
+                <span>lknasd lkansd lknag <br> fkerlknmc lkn <br> lknasd lkansd lknag <br> fkerlknmc lkn</span>
+              </a>
+            </p>
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-mobile"></i>
+                <span>9874563210</span>
+              </a>
+            </p>
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-envelope"></i>
+                <span>abcdefg@kitabee.com</span>
+              </a>
+            </p>
+          </div>
+          <div class="col-xs-3">
+            <ul class="list-unstyled footerNavs">
+              <li><a href="">HOME</a></li>
+              <li><a href="">EXAM</a></li>
+              <li><a href="">COURSES OFFERED</a></li>
+              <li><a href="">PRACTICE QUESTIONS</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-3">
+            <ul class="list-unstyled footerNavs">
+              <li><a href="">DASHBOARD</a></li>
+              <li><a href="">ABOUT US</a></li>
+              <li><a href="contact">CONTACT US</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-3">
+
+          </div>
+        </div>
+        <h6 class="text-center">Kitabee Education Services. All rights reserved.</h6>
+      </div>
+    </div>
+    <script type="text/javascript" src="assets/js/cycle.js"></script>
+    <script type="text/javascript" src="assets/js/cycle-tiles.js"></script>
+    <script>
       $(document).ready( function(){
-         
+          var url      = window.location.href; 
+          if(url.indexOf('section')>0){
+              $("[href='#create']").trigger('click');
+          }
+          if(url.indexOf('upload')>0){
+              $("[href='#uploads']").trigger('click');
+          }
+          if(url.indexOf('blog')>0){
+              $("[href='#blogs']").trigger('click');
+          }
+          if(url.indexOf('store-practice-question')>0){
+              $("[href='#practice-question']").trigger('click');
+          }
+          
           $("#uploads-section").validate({
           rules: 
               {
@@ -200,4 +261,5 @@
             
       });    
     </script>
+  </body>
 </html>
