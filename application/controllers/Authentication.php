@@ -24,15 +24,15 @@ class Authentication extends CI_Controller {
                 $result = $this->user->login($email, $pass);
                 if ($result) {
                     if ($this->session->userdata('role') == 'admin') {
-                        $this->session->set_flashdata('item', 'Login Successfull');
+                        $this->session->set_flashdata('item', 'Login Successful');
                         $this->load->view('header');
                         return $this->load->view('admin');
                     }
-                    $this->session->set_flashdata('item', 'Login Successfull');
+                    $this->session->set_flashdata('item', 'Login Successful');
                     $this->load->view('header');
                     return $this->load->view('student_dashboard');
                 }
-                 $this->session->set_flashdata('item', 'Wrong User Name password');
+                 $this->session->set_flashdata('item', 'Wrong Username and Password');
                  redirect(base_url());
             }
         } else {
@@ -44,14 +44,14 @@ class Authentication extends CI_Controller {
                     }
                     return $this->load->view('student_dashboard');
             }
-            $this->session->set_flashdata('item', 'Need to Login first');
+            $this->session->set_flashdata('item', 'Need to Login');
             redirect(base_url());
         }
     }
 
     public function logout() {
         session_destroy();
-        $this->session->set_flashdata('item', 'Logout successfull.');
+        $this->session->set_flashdata('item', 'Logout successful.');
         redirect(base_url());
     }
 

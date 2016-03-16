@@ -121,7 +121,7 @@ class CreateTest extends CI_Controller
         $chapter_id=$_POST['chapterid'];
         $this->load->model('SectionTest');
         $testData = $this->SectionTest->getSectionTest($chapter_id);
-//        print_r($testData);
+    //    print_r($testData);
 //        exit();
         $HTML='';
 //        if(!empty($testData))
