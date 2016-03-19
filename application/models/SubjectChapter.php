@@ -74,7 +74,9 @@ class SubjectChapter extends CI_Model
 
     function createChapterContents($data)
     {
-        return $this->db->insert('chapter_contents',$data);
+        $query = "insert into chapter_contents(sid, cid,chapter_location) values (".$data['sid'].",".$data['cid'].",'".$data['chapter_location']."') on duplicate key update sid =".$data['sid'].", cid=".$data['cid'].", chapter_location = '".$data['chapter_location']."';";
+        $result = $this->db->query($query);
+        return $result;
     }
 
     function getChapters($subject_id)

@@ -32,7 +32,7 @@ class Authentication extends CI_Controller {
                     $this->load->view('header');
                     return $this->load->view('student_dashboard');
                 }
-                 $this->session->set_flashdata('item', 'Wrong Username and Password');
+                 $this->session->set_flashdata('item', 'Wrong Username Or Password');
                  redirect(base_url());
             }
         } else {
@@ -44,14 +44,14 @@ class Authentication extends CI_Controller {
                     }
                     return $this->load->view('student_dashboard');
             }
-            $this->session->set_flashdata('item', 'Need to Login');
+            $this->session->set_flashdata('item', 'Need to Login first');
             redirect(base_url());
         }
     }
 
     public function logout() {
         session_destroy();
-        $this->session->set_flashdata('item', 'Logout successful.');
+        $this->session->set_flashdata('item', 'Logout successfull.');
         redirect(base_url());
     }
 

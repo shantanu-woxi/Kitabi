@@ -21,8 +21,8 @@ class CreateTest extends CI_Controller
         
         //fetch subject name from id
         $chapter_name=$this->SubjectChapter->getChapterName($chapter_id);
-        
-        echo "<br>";
+        $chapter_name=preg_replace("( )","_",$chapter_name);
+        echo "chapeter is:<br>".$chapter_name;
         for($i=1;$i<=10;$i++)
         {
             $temp='question_'.$i;
@@ -63,15 +63,19 @@ class CreateTest extends CI_Controller
                 /** Uploading code start*/
                 $this->load->helper(array('form', 'url'));
                 $config['upload_path'] = 'assets/options/'.$subject_name."/".$chapter_name."/";
-                
+                $path_to_per='/var/www/html/Kitabi/assets/options/'.$subject_name."/".$chapter_name."/";
                 if(!is_dir($config['upload_path']))//checks whether directory is already present or not
                 {
                     mkdir($config['upload_path'],0777,true);
-                    chmod($config['upload_path'],777);
+                    chmod($path_to_per,0777);
+                    echo $path_to_per;
+                    
                     echo $config['upload_path']."dir created";
                 }
+                chmod($path_to_per,0777);
+                echo $path_to_per;
                 
-                $config['allowed_types'] = 'gif|jpg|png';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '0';
                 for($j=1;$j<=4;$j++) //looping for all four files
                 {
@@ -82,12 +86,16 @@ class CreateTest extends CI_Controller
                     if ( ! $this->upload->do_upload($option[$j]))
                     {
                       $error = array('error' => $this->upload->display_errors());
-                      // print_r($error);
+                      print_r($error);
                       // exit();
                     }
                     else
                     {
                         $data = array('upload_data' => $this->upload->data());
+                        $newpath="chmod 777 ".$path_to_per."*.*";
+                        echo $newpath;
+                        //chmod($newpath,0777);
+                        exec($newpath);
                     }
                 }
                 
@@ -121,7 +129,7 @@ class CreateTest extends CI_Controller
         $chapter_id=$_POST['chapterid'];
         $this->load->model('SectionTest');
         $testData = $this->SectionTest->getSectionTest($chapter_id);
-    //    print_r($testData);
+//        print_r($testData);
 //        exit();
         $HTML='';
 //        if(!empty($testData))
