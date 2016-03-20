@@ -30,9 +30,11 @@
         <div class="dashboardContent">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active" id="create">
-                    <?php if (!empty($message) && $message != '') {
+                    <?php
+                    if (!empty($message) && $message != '') {
                         echo $message;
-                    } ?>
+                    }
+                    ?>
                     <h2 class="dashboardTitles">Create Section</h2>
                     <div class="row">    
                         <div class="col-xs-6 col-xs-offset-2">    
@@ -62,9 +64,11 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="uploads">
-<?php if (!empty($message) && $message != '') {
-    echo $message;
-} ?>
+                    <?php
+                    if (!empty($message) && $message != '') {
+                        echo $message;
+                    }
+                    ?>
                     <h2 class="dashboardTitles">Uploads Section</h2>
                     <div class="row">    
                         <div class="col-xs-6 col-xs-offset-2">    
@@ -98,9 +102,11 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="blogs">
-<?php if (!empty($message) && $message != '') {
+<?php
+if (!empty($message) && $message != '') {
     echo $message;
-} ?>
+}
+?>
                     <h2 class="dashboardTitles">Important Update</h2>
                     <div class="row">    
                         <div class="col-xs-6 col-xs-offset-2">    
@@ -168,9 +174,9 @@ foreach ($user_list as $x) {
                                                         } else {
                                                             ?>
                                                             <input type="checkbox" class='change-verification' data-toggle="toggle" value='<?php echo $x['id'] ?>'> 
-                                                            <?php
-                                                        }
-                                                        ?>
+        <?php
+    }
+    ?>
                                                     </label>
                                                 </div>
                                             </h4>
@@ -190,9 +196,9 @@ foreach ($user_list as $x) {
                                             </div>
                                         </div>
                                     </div>
-                                    <?php
-                                }
-                                ?>
+    <?php
+}
+?>
                             </div>
                         </div>
                     </div>
@@ -320,19 +326,34 @@ foreach ($user_list as $x) {
                 <p>
                     <a href="javascript:void(0);">
                         <i class="fa fa-map-marker"></i>
-                        <span>lknasd lkansd lknag <br> fkerlknmc lkn <br> lknasd lkansd lknag <br> fkerlknmc lkn</span>
+                        <span>123, Basement, Kingsway Camp, <br> (Near GTB Nagar Metro Station Gate No.1) <br>Delhi- 110009</span>
                     </a>
                 </p>
                 <p>
                     <a href="javascript:void(0);">
                         <i class="fa fa-mobile"></i>
-                        <span>9874563210</span>
+                        <span>9811373577</span>
                     </a>
-                </p>
+
+                </p> 
+                <p>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-mobile"></i>
+                        <span>7838804491</span>
+                    </a>
+
+                </p> 
+                <p>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-mobile"></i>
+                        <span>9718375475</span>
+                    </a>
+
+                </p>            
                 <p>
                     <a href="javascript:void(0);">
                         <i class="fa fa-envelope"></i>
-                        <span>abcdefg@kitabee.com</span>
+                        <span>contactus@kitabee.in</span>
                     </a>
                 </p>
             </div>
@@ -356,6 +377,7 @@ foreach ($user_list as $x) {
             </div>
         </div>
         <h6 class="text-center">Kitabee Education Services. All rights reserved.</h6>
+        <h6 class="text-center">CAT, XAT, SNAP, IIFT, SSC-CGL/CHSL, AAO, IBPS, SBI PO and more</h6>
     </div>
 </div>
 <script type="text/javascript" src="assets/js/cycle.js"></script>

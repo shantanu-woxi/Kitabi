@@ -107,6 +107,7 @@ class CreateTest extends CI_Controller
         $redirect_path=base_url()."dashboard";
         redirect($redirect_path);
     }
+    
     public function insertTest()
     {
         $subject_id=$_POST['upload_subject_number'];
@@ -118,7 +119,7 @@ class CreateTest extends CI_Controller
             $temp='question_'.$i;
             $section_questions_id=$this->load->model($subject_id,$chapter_id,$_POST[$temp]);
         }
-        redirect("dashboard");
+        redirect(base_url()."dashboard");
     }
     
     public function showTest()
@@ -205,15 +206,6 @@ class CreateTest extends CI_Controller
         }
         $this->session->set_flashdata('item', 'Test Submitted Successfully \n Your Score: '.$count);
         redirect(base_url()."dashboard");
-        /*
-        if($result)
-        {
-            //operation successful message
-        }
-        else
-        {
-            //operation unsuccessful message
-        }*/
     }
     public function mytest()
     {

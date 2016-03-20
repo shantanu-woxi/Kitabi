@@ -325,7 +325,6 @@ h1,h2,h3,h4,h5,h6{
     background-color: #D21212;
 }
 .banner{
-  background: #eee;
   position: relative;
 }
 .banner .container{
@@ -521,4 +520,18 @@ h1,h2,h3,h4,h5,h6{
 .width-11{
     width: 91.66666667% !important;
 }
-    
+
+.footer{
+    position: relative;
+}
+.upperlogo{
+    margin-right: 10px;
+}
+.upperlogo img{
+   width: 160px;
+}
+.cycle-slideshow img {
+    width: 100%;
+    max-height: 540px;
+}
+
