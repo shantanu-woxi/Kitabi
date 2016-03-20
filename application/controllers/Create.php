@@ -61,6 +61,7 @@ class Create extends CI_Controller {
         $chapterID = $_POST['upload_section_number'];
         $this->load->model('SubjectChapter');
         $subjectName = $this->SubjectChapter->getSubjectName($subjectID); //result contains name of subject. this is used to insert into table chapters.
+        
         //to fetch chapter name
         $this->load->model('SubjectChapter');
         $chapterName = $this->SubjectChapter->getChapterName($chapterID);
@@ -75,23 +76,33 @@ class Create extends CI_Controller {
             $_FILES['userfile']['name'] = $chapterName.".pdf";
             $config['file_name'] = $_FILES['userfile']['name'];
             $this->load->library('upload', $config);
-            $path = $_SERVER['DOCUMENT_ROOT'].'/kitabee.in/'.$config['upload_path'].$config['file_name'];
+            //$path = $_SERVER['DOCUMENT_ROOT'].'/kitabee.in/'.$config['upload_path'].$config['file_name'];
+            $checkpath = $_SERVER['DOCUMENT_ROOT']."/Kitabi/".$config['upload_path'].$config['file_name'];
+            
             $this->load->helper("file");
-            if(file_exists($path)){
-                unlink($path);
+            if(file_exists($checkpath))
+            {
+                unlink($checkpath);
             }
             if ( ! $this->upload->do_upload('userfile'))
             {
+              /**
+               * If file upload has any errors then following code will execute.
+               */
               $error = array('error' => $this->upload->display_errors());
-                      
+              print_r($error);
+              exit();
             }
             else
             {
+                   /**
+                    * If file uploaded successfully.
+                    */
                     $data = array('upload_data' => $this->upload->data());
-                    chmod($path, 0777);
+                    chmod($checkpath, 0777);
             }
             
-            $data = array(
+            $insertdata = array(
                 'sid' => $subjectID,
                 'cid' => $chapterID,
                 'chapter_location' => $this->upload->data()['file_name']
@@ -99,7 +110,7 @@ class Create extends CI_Controller {
 
             //insert into chapter_contents
             $this->load->model('SubjectChapter');
-            $operation_result = $this->SubjectChapter->createChapterContents($data);
+            $operation_result = $this->SubjectChapter->createChapterContents($insertdata);
 		if($operation_result==0){
 	                $data['message']="<div class='alert alert-danger'><strong>Error!</strong> Content for ".$_POST['section_Name']." already exsits.</div>";
                 	return $this->load->view('admin',$data);
@@ -151,5 +162,40 @@ class Create extends CI_Controller {
         echo $HTML;
         }
     }
+    
+    function getUserList()
+    {
+        $this->load->model("user");
+        $result = $this->user->getUsers();
+        if($result)
+        {
+            //print_r($result->result_array());
+            //$this->load->view('header');
+            $data['user_list']=$result->result_array();
+            return $this->load->view('userVerification',$data);
+        }
+        else
+        {
+            echo "no users found";
+        }
     }
+    function setUserConfirmation()
+    {
+        $id=$_POST['user_id'];
+        $value=$_POST['verification'];
+        
+       // $id=5;
+       // $value=0;
+        $this->load->model("user");
+        $result = $this->user->changeUserConfirmation($id,$value);
+        if($result)
+        {
+            //show success message
+        }
+        else
+        {
+            //show error message
+        }
+    }
+}
 ?>

@@ -25,8 +25,23 @@ class Authentication extends CI_Controller {
                 if ($result) {
                     if ($this->session->userdata('role') == 'admin') {
                         $this->session->set_flashdata('item', 'Login Successful');
+                        //my new code
+                        $this->load->model("user");
+                        $result1 = $this->user->getUsers();
+                        if($result1)
+                        {
+                            //print_r($result->result_array());
+                            //$this->load->view('header');
+                            $data['user_list']=$result1->result_array();
+                            //return $this->load->view('userVerification',$data);
+                        }
+                        else
+                        {
+                            $data['user_list']=null;
+                        }
+                        //finish
                         $this->load->view('header');
-                        return $this->load->view('admin');
+                        return $this->load->view('admin',$data);
                     }
                     $this->session->set_flashdata('item', 'Login Successful');
                     $this->load->view('header');
@@ -40,7 +55,22 @@ class Authentication extends CI_Controller {
             if (!empty($this->session->userdata('role')) && $this->session->userdata('role')!='') {
                $this->load->view('header');
                if ($this->session->userdata('role') == 'admin') {
-                        return $this->load->view('admin');
+                   //my new code
+                        $this->load->model("user");
+                        $result1 = $this->user->getUsers();
+                        if($result1)
+                        {
+                            //print_r($result->result_array());
+                            //$this->load->view('header');
+                            $data['user_list']=$result1->result_array();
+                            //return $this->load->view('userVerification',$data);
+                        }
+                        else
+                        {
+                            $data['user_list']=null;
+                        }
+                        //finish
+                        return $this->load->view('admin',$data);
                     }
                     return $this->load->view('student_dashboard');
             }
@@ -59,7 +89,7 @@ class Authentication extends CI_Controller {
         $this->load->model('user');
         $result = $this->user->userRegistration($_POST);
         if ($result) {
-            $this->login($_POST['email'], $_POST['password']);
+            $this->login($_POST['email_id'], $_POST['password']);
         } else {
             return $this->load->view('contact');
         }

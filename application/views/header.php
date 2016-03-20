@@ -12,6 +12,9 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js"></script>
     <script src="<?php echo base_url();?>assets/js/sweetalert-dev.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+    <link href="assets/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="assets/js/bootstrap-toggle.min.js"></script>
+
     <?php if(!empty($this->session->flashdata('item'))){echo "<script>var message='".$this->session->flashdata('item')."';</script>";}else{echo "<script>var message=null;</script>";}?>
     <script>
       $(document).ready(function(){

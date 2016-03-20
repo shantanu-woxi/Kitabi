@@ -3,6 +3,15 @@
 class SectionTest extends CI_Model
 {
     //$subject_id,$chapter_id,$_POST[$temp],$options,$anstype,$answer
+    function deleteSectionTest($subject_id,$chapter_id)
+    {
+        $delete_query="delete from section_questions where sub_id=".$subject_id." and sect_id=".$chapter_id.";";
+        $this->db->query($delete_query);
+        /**
+         * Necessary to delete all records related to previous test data of user from section_test_result
+         */
+    }
+    
     function insertSectionTest($subject_id,$chapter_id,$question,$options,$anstype,$answer)
     {
         $data=array(
@@ -13,8 +22,8 @@ class SectionTest extends CI_Model
             'is_image'=>$anstype,
             'answer'=>$answer
         );
-        return $this->db->insert('section_questions',$data); 
-       
+        $result=  $this->db->insert('section_questions',$data);
+        return $result;        
     }
     function getSectionTest($chapter_id)
     {

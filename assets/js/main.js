@@ -153,3 +153,6 @@ var getChapterTest=function(section_id){
   });
     
 }
+
+//laxdeep method
+
