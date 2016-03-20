@@ -49,6 +49,9 @@ class Authentication extends CI_Controller {
                 }
                  $this->session->set_flashdata('item', 'Wrong Username Or Password');
                  redirect(base_url());
+            }else{
+                $this->session->set_flashdata('item', 'Password length is less than 6 characters.');
+                 redirect(base_url());
             }
         } else {
             
