@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Title of the document</title>
+    <title>Kitabee</title>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="assets/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -50,7 +50,7 @@
               </a> <span class="loginHref">|</span>
             </li>
             <li class="loginMenu v-top">
-                <?php if(empty($this->session->userdata['id'])){?>
+                <?php if(empty($this->session->userdata['id']) || ($this->session->userdata['verified'])==0){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
              <a class="logoutLink logoutHref" href="logout">Logout</a>

@@ -82,7 +82,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputFile">Upload PDF</label>
-                        <input type="file" id="exampleInputFile" name="userfile" multiple="multiple">
+                        <input type="file" id="exampleInputFile" name="userfile1" multiple="multiple">
                         <p class="help-block">Example chapter1.pdf</p>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>

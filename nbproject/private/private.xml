@@ -6,14 +6,14 @@
             <file>file:/var/www/html/Kitabi/application/config/routes.php</file>
             <file>file:/var/www/html/Kitabi/application/views/student_dashboard.php</file>
             <file>file:/var/www/html/Kitabi/application/views/header.php</file>
+            <file>file:/var/www/html/Kitabi/application/views/index.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/CreateTest.php</file>
-            <file>file:/var/www/html/Kitabi/application/config/config.php</file>
+            <file>file:/var/www/html/Kitabi/application/views/userVerification.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/Create.php</file>
             <file>file:/var/www/html/Kitabi/assets/js/main.js</file>
-            <file>file:/var/www/html/Kitabi/application/models/SectionTest.php</file>
+            <file>file:/var/www/html/Kitabi/application/models/User.php</file>
             <file>file:/var/www/html/Kitabi/application/controllers/Authentication.php</file>
-            <file>file:/var/www/html/Kitabi/application/controllers/PracticeQuestion.php</file>
-            <file>file:/var/www/html/Kitabi/.htaccess</file>
+            <file>file:/var/www/html/Kitabi/application/views/admin.php</file>
         </group>
     </open-files>
 </project-private>

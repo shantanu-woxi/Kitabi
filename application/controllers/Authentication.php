@@ -15,7 +15,6 @@ class Authentication extends CI_Controller {
     }
 
     function login() {
-         
         if (isset($_POST["usernamefield"]) && isset($_POST["passfield"])) {
             $email = $_POST["usernamefield"];
             $pass = $_POST["passfield"];
@@ -23,15 +22,33 @@ class Authentication extends CI_Controller {
                 $this->load->model("user");
                 $result = $this->user->login($email, $pass);
 
-                if ($result) {
-                    if ($this->session->userdata('role') == 'admin') {
+                if ($result) 
+                {
+                    if ($this->session->userdata('role') == 'admin') 
+                    {
                         $this->session->set_flashdata('item', 'Login Successfull');
                         $this->load->view('header');
                         return $this->load->view('admin');
                     }
-                    $this->session->set_flashdata('item', 'Login Successfull');
-                    $this->load->view('header');
-                    return $this->load->view('student_dashboard');
+                    else if($this->session->userdata('role') == 'user' &&  $this->session->userdata('verified') == 1)
+                    {
+                        /**
+                         *  if the user is verified
+                         */
+                        $this->session->set_flashdata('item', 'Login Successfull');
+                        $this->load->view('header');
+                        return $this->load->view('student_dashboard');
+                    }
+                    else
+                    {
+                        /**
+                         * if the user is not verified yet
+                         */
+                        session_destroy();
+                        $this->session->set_flashdata('item', 'Request Pending');
+                        $this->load->view('header');
+                        return $this->load->view('index');
+                    }
                 }
                 else//if login failed
                 {
@@ -72,7 +89,7 @@ class Authentication extends CI_Controller {
         $this->load->model('user');
         $result = $this->user->userRegistration($_POST);
         if ($result) {
-            $this->login($_POST['email'], $_POST['password']);
+            $this->login($_POST['email_id'], $_POST['password']);
         } else {
             return $this->load->view('contact');
         }

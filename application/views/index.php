@@ -1,12 +1,4 @@
-<?php
-if(empty($this->session->userdata['id']))
-{
-    ?>
-<script>sweetAlert("login failed","mkdfv","error");</script>
-    <?php
-}
 
-?>
 <div class="banner">
       <div class="">
         <div class="cycle-slideshow"

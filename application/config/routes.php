@@ -70,3 +70,5 @@ $route['get-chapters-list'] = 'create/getChaptersList';
 $route['createTest'] = 'createTest/testData';
 $route['get-chapters-test'] = 'createTest/showTest';
 $route['save-chapters-test'] = 'createTest/saveTestData';
+$route['showUsers'] = 'create/getUserList';
+$route['set-user-confirmation'] = 'create/setUserConfirmation';

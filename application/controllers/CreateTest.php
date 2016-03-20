@@ -15,14 +15,23 @@ class CreateTest extends CI_Controller
         $subject_id=$_POST['upload_subject_number'];
         $chapter_id=$_POST['upload_section_number'];
         
+        /**delete previous section test for selected subject_id and chapter_id*/
+        $this->load->model('SectionTest');
+        $deleteResult=$this->SectionTest->deleteSectionTest($subject_id,$chapter_id);
+        
+        if($deleteResult)
+            echo 'previous section test deleted';
+        else
+            echo 'previous section test is not deleted yet.';
+        
         //fetch subject name from id
         $this->load->model('SubjectChapter');
         $subject_name=$this->SubjectChapter->getSubjectName($subject_id);
         
         //fetch subject name from id
         $chapter_name=$this->SubjectChapter->getChapterName($chapter_id);
-        
-        echo "<br>";
+        $chapter_name=preg_replace("( )","_",$chapter_name);
+    
         for($i=1;$i<=10;$i++)
         {
             $temp='question_'.$i;
@@ -63,15 +72,15 @@ class CreateTest extends CI_Controller
                 /** Uploading code start*/
                 $this->load->helper(array('form', 'url'));
                 $config['upload_path'] = 'assets/options/'.$subject_name."/".$chapter_name."/";
-                
+                $path_to_per='/var/www/html/Kitabi/assets/options/'.$subject_name."/".$chapter_name."/";
                 if(!is_dir($config['upload_path']))//checks whether directory is already present or not
                 {
                     mkdir($config['upload_path'],0777,true);
-                    chmod($config['upload_path'],777);
-                    echo $config['upload_path']."dir created";
+                    chmod($path_to_per,0777);
                 }
-                
-                $config['allowed_types'] = 'gif|jpg|png';
+                chmod($path_to_per,0777);
+    
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size'] = '0';
                 for($j=1;$j<=4;$j++) //looping for all four files
                 {
@@ -82,25 +91,29 @@ class CreateTest extends CI_Controller
                     if ( ! $this->upload->do_upload($option[$j]))
                     {
                       $error = array('error' => $this->upload->display_errors());
-                      // print_r($error);
+            //          print_r($error);
                       // exit();
                     }
                     else
                     {
                         $data = array('upload_data' => $this->upload->data());
+                        $newpath="chmod 777 ".$path_to_per."*.*";
+          //              echo $newpath;
+                        exec($newpath);
                     }
                 }
-                
                 /** Uploading code end*/
+                
             }
             $answer=$_POST['answer_'.$i];
             //$anstype=$_POST['anstype'.$i];
             $result=$this->SectionTest->insertSectionTest($subject_id,$chapter_id,$question, json_encode($optinsArray),$is_image,$answer);
-            echo $result;
-           
-//            echo $section_questions_id->result_array();
-        }        
+        }//for loop completed
+        
+        $redirect_path=base_url()."dashboard";
+        redirect($redirect_path);
     }
+    
     public function insertTest()
     {
         $subject_id=$_POST['upload_subject_number'];
