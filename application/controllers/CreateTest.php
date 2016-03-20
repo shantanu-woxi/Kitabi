@@ -5,13 +5,6 @@ class CreateTest extends CI_Controller
     
     public function testData()
     {
-        /*echo "<pre>";
-        $option="question1_option1";
-        print_r($_FILES[$option]['name']);
-        print_r($_FILES["question1_option2"]['name']);
-        print_r($_POST);
-        exit();
-        */
         $subject_id=$_POST['upload_subject_number'];
         $chapter_id=$_POST['upload_section_number'];
         
@@ -21,8 +14,7 @@ class CreateTest extends CI_Controller
         
         //fetch subject name from id
         $chapter_name=$this->SubjectChapter->getChapterName($chapter_id);
-        $chapter_name=preg_replace("( )","_",$chapter_name);
-        echo "chapeter is:<br>".$chapter_name;
+        
         for($i=1;$i<=10;$i++)
         {
             $temp='question_'.$i;
@@ -63,19 +55,14 @@ class CreateTest extends CI_Controller
                 /** Uploading code start*/
                 $this->load->helper(array('form', 'url'));
                 $config['upload_path'] = 'assets/options/'.$subject_name."/".$chapter_name."/";
-                $path_to_per='/var/www/html/Kitabi/assets/options/'.$subject_name."/".$chapter_name."/";
+                
                 if(!is_dir($config['upload_path']))//checks whether directory is already present or not
                 {
                     mkdir($config['upload_path'],0777,true);
-                    chmod($path_to_per,0777);
-                    echo $path_to_per;
-                    
-                    echo $config['upload_path']."dir created";
+                    chmod($config['upload_path'],777);                    
                 }
-                chmod($path_to_per,0777);
-                echo $path_to_per;
                 
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size'] = '0';
                 for($j=1;$j<=4;$j++) //looping for all four files
                 {
@@ -86,16 +73,12 @@ class CreateTest extends CI_Controller
                     if ( ! $this->upload->do_upload($option[$j]))
                     {
                       $error = array('error' => $this->upload->display_errors());
-                      print_r($error);
+                      // print_r($error);
                       // exit();
                     }
                     else
                     {
                         $data = array('upload_data' => $this->upload->data());
-                        $newpath="chmod 777 ".$path_to_per."*.*";
-                        echo $newpath;
-                        //chmod($newpath,0777);
-                        exec($newpath);
                     }
                 }
                 
@@ -103,11 +86,10 @@ class CreateTest extends CI_Controller
             }
             $answer=$_POST['answer_'.$i];
             //$anstype=$_POST['anstype'.$i];
-            $result=$this->SectionTest->insertSectionTest($subject_id,$chapter_id,$question, json_encode($optinsArray),$is_image,$answer);
-            echo $result;
-           
-//            echo $section_questions_id->result_array();
+            $result = $this->SectionTest->insertSectionTest($subject_id,$chapter_id,$question, json_encode($optinsArray),$is_image,$answer);
         }        
+        $this->session->set_flashdata('item', 'Test for '.$chapter_name.' Created Successfully');
+        redirect(base_url()."dashboard");
     }
     public function insertTest()
     {
@@ -120,7 +102,7 @@ class CreateTest extends CI_Controller
             $temp='question_'.$i;
             $section_questions_id=$this->load->model($subject_id,$chapter_id,$_POST[$temp]);
         }
-        redirect("dashboard");
+        redirect(base_url()."dashboard");
     }
     
     public function showTest()
@@ -207,15 +189,6 @@ class CreateTest extends CI_Controller
         }
         $this->session->set_flashdata('item', 'Test Submitted Successfully \n Your Score: '.$count);
         redirect(base_url()."dashboard");
-        /*
-        if($result)
-        {
-            //operation successful message
-        }
-        else
-        {
-            //operation unsuccessful message
-        }*/
     }
     public function mytest()
     {

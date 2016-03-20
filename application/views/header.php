@@ -30,6 +30,7 @@
     <div class="header">
       <div class="topHeader clearfix">
         <div class="container">
+           <div class="pull-left upperlogo" href="welcome"><img src="<?php echo base_url();?>assets/images/textlogo.png"></div> 
           <h4 class="pull-left">SSC/BANK P.O. PREPRATORY CLASSES</h4>
           <ul class="list-unstyled list-inline pull-right socialHeader">
             <li>
@@ -79,7 +80,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="clearfix navWrapper">
-                <a class="brand pull-left" href="welcome"><img src="<?php echo base_url();?>assets/images/logo.jpg"></a>
+                <a class="brand pull-left" href="welcome"><img src="<?php echo base_url();?>assets/images/logo-original.png"></a>
                 <div class="logins pull-right">
                   <ul class="navs list-unstyled list-inline">
                       <li><a class="home" href="<?php echo base_url();?>welcome"><i class="fa fa-home"></i></a></li>

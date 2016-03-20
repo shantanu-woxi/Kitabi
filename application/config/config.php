@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = "http://www.kitabee.in";
-
+// $config['base_url'] = "http://localhost/Kitabi/";
 /*
 |--------------------------------------------------------------------------
 | Index File

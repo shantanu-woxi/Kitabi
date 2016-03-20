@@ -80,19 +80,34 @@
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-map-marker"></i>
-                <span>lknasd lkansd lknag <br> fkerlknmc lkn <br> lknasd lkansd lknag <br> fkerlknmc lkn</span>
+                <span>123, Basement, Kingsway Camp, <br> (Near GTB Nagar Metro Station Gate No.1) <br>Delhi- 110009</span>
               </a>
             </p>
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-mobile"></i>
-                <span>9874563210</span>
+                <span>9811373577</span>
               </a>
-            </p>
+              
+            </p> 
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-mobile"></i>
+                <span>7838804491</span>
+              </a>
+              
+            </p> 
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-mobile"></i>
+                <span>9718375475</span>
+              </a>
+              
+            </p>            
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-envelope"></i>
-                <span>abcdefg@kitabee.com</span>
+                <span>contactus@kitabee.in</span>
               </a>
             </p>
           </div>
@@ -116,9 +131,9 @@
           </div>
         </div>
         <h6 class="text-center">Kitabee Education Services. All rights reserved.</h6>
+         <h6 class="text-center">CAT, XAT, SNAP, IIFT, SSC-CGL/CHSL, AAO, IBPS, SBI PO and more</h6>
       </div>
     </div>
-    
     <script>
       $(document).ready( function(){
           $("#registrationForm").validate({

@@ -5,7 +5,8 @@
     <div class="sidebarNav">
         <div class="dashboardMenu">
             <ul class="nav nav-pills nav-stacked dashboardNav">
-                <li role="presentation" class="active"><a href="#2" data-toggle="tab">Subjects</a></li>
+                <li role="presentation" class="active"><a href="#home" data-toggle="tab">Welcome</a></li>
+                <li role="presentation" class=""><a href="#2" data-toggle="tab">Subjects</a></li>
                 <!-- <li role="presentation"><a  href="#3" data-toggle="tab">Tests</a></li> -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tests
@@ -21,8 +22,11 @@
     <div class="row">
         <div class="dashboardContent">
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade" id="home">
+                <div role="tabpanel" class="tab-pane fade in active" id="home">
                     <h2 class="dashboardTitles">Dashboard</h2>
+                    <p>
+              We prepare the students for SSC exams. This exam has four sections- Quantitative Aptitude, Reasoning, Verbal Ability and General awareness. By providing online mentoring and classroom training we prepare students aspiring for this exam in every stage. Our faculty members have an enriched experience and an excellent academic background in preparing the students for all types of competitive exams.
+            </p>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="1">2</div>
                 <div role="tabpanel" class="tab-pane fade" id="sectionTest">
@@ -60,7 +64,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="fullLength">
                     <h2 class="dashboardTitles">Full Length Tests</h2>
                 </div>
-                <div role="tabpanel" class="tab-pane fade in active" id="2">
+                <div role="tabpanel" class="tab-pane fade" id="2">
                     <div class="subjectsWrap">  
                         <h2 class="dashboardTitles">Subjects</h2>
                         <div class="row text-center subjectsListLinks">
@@ -177,19 +181,34 @@
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-map-marker"></i>
-                <span>lknasd lkansd lknag <br> fkerlknmc lkn <br> lknasd lkansd lknag <br> fkerlknmc lkn</span>
+                <span>123, Basement, Kingsway Camp, <br> (Near GTB Nagar Metro Station Gate No.1) <br>Delhi- 110009</span>
               </a>
             </p>
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-mobile"></i>
-                <span>9874563210</span>
+                <span>9811373577</span>
               </a>
-            </p>
+              
+            </p> 
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-mobile"></i>
+                <span>7838804491</span>
+              </a>
+              
+            </p> 
+            <p>
+              <a href="javascript:void(0);">
+                <i class="fa fa-mobile"></i>
+                <span>9718375475</span>
+              </a>
+              
+            </p>            
             <p>
               <a href="javascript:void(0);">
                 <i class="fa fa-envelope"></i>
-                <span>abcdefg@kitabee.com</span>
+                <span>contactus@kitabee.in</span>
               </a>
             </p>
           </div>
@@ -213,6 +232,7 @@
           </div>
         </div>
         <h6 class="text-center">Kitabee Education Services. All rights reserved.</h6>
+         <h6 class="text-center">CAT, XAT, SNAP, IIFT, SSC-CGL/CHSL, AAO, IBPS, SBI PO and more</h6>
       </div>
     </div>
     <script type="text/javascript" src="assets/js/cycle.js"></script>
