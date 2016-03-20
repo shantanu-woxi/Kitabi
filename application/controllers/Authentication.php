@@ -15,64 +15,64 @@ class Authentication extends CI_Controller {
     }
 
     function login() {
+         
         if (isset($_POST["usernamefield"]) && isset($_POST["passfield"])) {
             $email = $_POST["usernamefield"];
             $pass = $_POST["passfield"];
             if (strlen($pass) >= 6) {
                 $this->load->model("user");
                 $result = $this->user->login($email, $pass);
-
-                if ($result) 
-                {
-                    if ($this->session->userdata('role') == 'admin') 
-                    {
-                        $this->session->set_flashdata('item', 'Login Successfull');
+                if ($result) {
+                    if ($this->session->userdata('role') == 'admin') {
+                        $this->session->set_flashdata('item', 'Login Successful');
+                        //my new code
+                        $this->load->model("user");
+                        $result1 = $this->user->getUsers();
+                        if($result1)
+                        {
+                            //print_r($result->result_array());
+                            //$this->load->view('header');
+                            $data['user_list']=$result1->result_array();
+                            //return $this->load->view('userVerification',$data);
+                        }
+                        else
+                        {
+                            $data['user_list']=null;
+                        }
+                        //finish
                         $this->load->view('header');
-                        return $this->load->view('admin');
+                        return $this->load->view('admin',$data);
                     }
-                    else if($this->session->userdata('role') == 'user' &&  $this->session->userdata('verified') == 1)
-                    {
-                        /**
-                         *  if the user is verified
-                         */
-                        $this->session->set_flashdata('item', 'Login Successfull');
-                        $this->load->view('header');
-                        return $this->load->view('student_dashboard');
-                    }
-                    else
-                    {
-                        /**
-                         * if the user is not verified yet
-                         */
-                        session_destroy();
-                        $this->session->set_flashdata('item', 'Request Pending');
-                        $this->load->view('header');
-                        return $this->load->view('index');
-                    }
-                }
-                else//if login failed
-                {
+                    $this->session->set_flashdata('item', 'Login Successful');
                     $this->load->view('header');
-                   // $this->session->set_flashdata('flashError', 'Login Error!!');
-                    return $this->load->view('index');
-                    
+                    return $this->load->view('student_dashboard');
                 }
+                 $this->session->set_flashdata('item', 'Wrong Username Or Password');
+                 redirect(base_url());
             }
-        }
-        else//check session is already set or not
-        {            
-            if(isset($this->session->userdata))
-            {
-                $this->load->view('header');
-                if($this->session->userdata('role')=='admin')
-                    { 
-                        return $this->load->view('admin'); 
-
+        } else {
+            
+            if (!empty($this->session->userdata('role')) && $this->session->userdata('role')!='') {
+               $this->load->view('header');
+               if ($this->session->userdata('role') == 'admin') {
+                   //my new code
+                        $this->load->model("user");
+                        $result1 = $this->user->getUsers();
+                        if($result1)
+                        {
+                            //print_r($result->result_array());
+                            //$this->load->view('header');
+                            $data['user_list']=$result1->result_array();
+                            //return $this->load->view('userVerification',$data);
+                        }
+                        else
+                        {
+                            $data['user_list']=null;
+                        }
+                        //finish
+                        return $this->load->view('admin',$data);
                     }
-                    elseif ($this->session->userdata('role')=='user')
-                    {
-                        return $this->load->view('student_dashboard');
-                    }                    
+                    return $this->load->view('student_dashboard');
             }
             $this->session->set_flashdata('item', 'Need to Login first');
             redirect(base_url());

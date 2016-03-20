@@ -54,72 +54,75 @@ class Create extends CI_Controller {
     }
 
     public function uploadToSections() {
-        
+        $this->load->helper(array('form', 'url'));
         $this->load->view('header');  //not loading on first click
 
         $subjectID = $_POST['upload_subject_number'];
         $chapterID = $_POST['upload_section_number'];
         $this->load->model('SubjectChapter');
         $subjectName = $this->SubjectChapter->getSubjectName($subjectID); //result contains name of subject. this is used to insert into table chapters.
+        
         //to fetch chapter name
         $this->load->model('SubjectChapter');
         $chapterName = $this->SubjectChapter->getChapterName($chapterID);
         
         //uploading file
-        $this->load->helper(array('form', 'url'));
+        
         if (!empty($_POST['upload_subject_number']) && !empty($_POST['upload_section_number'])) {
             $config['upload_path'] = 'assets/sections/'.$subjectName.'/';
-            print_r($config['upload_path']);
-//            if(!is_dir($config['upload_path']))//if directory is not present
-//            {
-//                mkdir($config['upload_path'],0777,true);  
-//                chmod($config['upload_path'],777);
-//            }
             $config['allowed_types'] = 'pdf';
-            $config['max_size']	= '0';
-            $_FILES['userfile1']['name'] = $chapterName.".pdf";
-            $config['file_name'] = $_FILES['userfile1']['name'];
-            print_r("file name: ".$config['file_name']);
+            $config['max_size'] = '0';
+            $chapterName = preg_replace("( )", "_", $chapterName);
+            $_FILES['userfile']['name'] = $chapterName.".pdf";
+            $config['file_name'] = $_FILES['userfile']['name'];
             $this->load->library('upload', $config);
+            //$path = $_SERVER['DOCUMENT_ROOT'].'/kitabee.in/'.$config['upload_path'].$config['file_name'];
             $checkpath = $_SERVER['DOCUMENT_ROOT']."/Kitabi/".$config['upload_path'].$config['file_name'];
+            
+            $this->load->helper("file");
             if(file_exists($checkpath))
-               unlink($checkpath);
-            if ( ! $this->upload->do_upload('userfile1'))
             {
-		      $error = array('error' => $this->upload->display_errors());
-                       print_r($error);
-                       exit();
-                //		$this->load->view('upload_form', $error);
+                unlink($checkpath);
+            }
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+              /**
+               * If file upload has any errors then following code will execute.
+               */
+              $error = array('error' => $this->upload->display_errors());
+              print_r($error);
+              exit();
             }
             else
             {
+                   /**
+                    * If file uploaded successfully.
+                    */
                     $data = array('upload_data' => $this->upload->data());
-                           print_r($data);
-                           system('sh /var/www/html/Kitabi/test1.sh');
-                     exit();
-                    //		$this->load->view('upload_success', $data);
+                    chmod($checkpath, 0777);
             }
-            //print_r($_POST['userfile']);            
-        
             
-            //create data array
-            $data = array(
+            $insertdata = array(
                 'sid' => $subjectID,
                 'cid' => $chapterID,
                 'chapter_location' => $this->upload->data()['file_name']
             );
-            exit();
+
             //insert into chapter_contents
             $this->load->model('SubjectChapter');
-            $operation_result = $this->SubjectChapter->createChapterContents($data);
-            if($operation_result )
-                return $this->load->view('admin');
-            else
-                echo 'un successful';
-         
+            $operation_result = $this->SubjectChapter->createChapterContents($insertdata);
+		if($operation_result==0){
+	                $data['message']="<div class='alert alert-danger'><strong>Error!</strong> Content for ".$_POST['section_Name']." already exsits.</div>";
+                	return $this->load->view('admin',$data);
+        	    }
+	
+	            $data['message']="<div class='alert alert-success'><strong>Success!</strong> Section Uploaded Successfully.</div>";
+            return $this->load->view('admin',$data);
         }
-        return $this->load->view('admin');
+	$data['message']="<div class='alert alert-danger'><strong>Error!</strong> Failed to Upload Section.</div>";
+        return $this->load->view('admin',$data);
     }
+
 
     public function getChapters(){
         if(!empty($_POST['subid'])){
@@ -194,6 +197,5 @@ class Create extends CI_Controller {
             //show error message
         }
     }
-    
-   }
+}
 ?>

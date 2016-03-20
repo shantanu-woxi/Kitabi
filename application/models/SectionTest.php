@@ -3,10 +3,6 @@
 class SectionTest extends CI_Model
 {
     //$subject_id,$chapter_id,$_POST[$temp],$options,$anstype,$answer
-    /**$query = "insert into chapter_contents(sid, cid,chapter_location) values (".$data['sid'].",".$data['cid'].",'".$data['chapter_location']."') 
-     * on duplicate key update sid =".$data['sid'].", cid=".$data['cid'].", chapter_location = '".$data['chapter_location']."';";
-     * 
-     */
     function deleteSectionTest($subject_id,$chapter_id)
     {
         $delete_query="delete from section_questions where sub_id=".$subject_id." and sect_id=".$chapter_id.";";
@@ -29,30 +25,27 @@ class SectionTest extends CI_Model
         $result=  $this->db->insert('section_questions',$data);
         return $result;        
     }
-    
     function getSectionTest($chapter_id)
     {
-        $query="select * from section_questions where sect_id=".$chapter_id." order by id desc";
+        $query="select * from section_questions where sect_id=".$chapter_id."";
         $testData =  $this->db->query($query);
         if(!empty($testData))
         {
             return $testData->result_array();
         }
     }
-    
     function saveSectionTestData($data)
     {
         return $this->db->insert('section_test_result',$data);
     }
-    
     function mytestdata()
     {
+        
         $data=array('id1'=>1);
         print_r($data);
         echo "here";
         return $this->db->insert('mytest',$data);
     }
-    
     function getAnswer($question_id)
     {
         $query="select answer from section_questions where id=".$question_id."";
@@ -60,5 +53,6 @@ class SectionTest extends CI_Model
         return $answer;
     }
 }
+
 
 ?>

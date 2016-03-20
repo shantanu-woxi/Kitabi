@@ -27,7 +27,14 @@ class Blogs extends CI_Model
     }
     function insertIntoBlog($data)
     {
-        return $this->db->insert('blogs',$data);        
+         $this->db->where(array('title'=>$data['title']));
+         $this->db->from('blogs');
+         $result= $this->db->get();
+         if($result->num_rows() > 0){
+             return 0;
+         }else{
+             return $this->db->insert('blogs',$data);   
+         }
     }
     function getBlogs()
     {

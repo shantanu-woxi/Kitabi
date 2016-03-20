@@ -72,7 +72,7 @@
       </div>
     </div><!--header ends-->
     <div class="banner">
-      <div class="">
+      <div class="container">
         <div class="cycle-slideshow"
           data-cycle-timeout=4000
           data-cycle-next="#next"
@@ -96,7 +96,7 @@
           <li class="col-xs-3"><a href=""><img src="images/4.png" alt=""><span>Courses Offered</span></a></li>
           <li class="col-xs-3"><a href=""><img src="images/3.png" alt=""><span>Online Lessons</span></a></li>
           <li class="col-xs-3"><a href=""><img src="images/2.png" alt=""><span>Test Sessions</span></a></li>
-          <li class="col-xs-3"><a href=""><img src="images/1.png" alt=""><span>Practice Questions</span></a></li>
+          <li class="col-xs-3"><a href=""><img src="images/1.png" alt=""><span>Practice Sessions</span></a></li>
         </ul>
       </div>
     </div><!--secNav ends-->

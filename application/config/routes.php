@@ -49,6 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+////////////
 $route['default_controller'] = 'welcome';
 $route['migration']='migration';
 $route['404_override'] = '';
@@ -61,7 +63,8 @@ $route['aboutus'] = 'welcome/aboutus';
 $route['impupdates'] = 'welcome/impupdates';
 $route['practice-questions'] = 'practiceQuestion/show';
 $route['blog'] = 'blog/insertBlog';
-$route['importantupdate'] = 'blog/getBlogs';
+$route['important-update'] = 'blog/getBlogs';
+$route['important-update/(:any)'] = 'blog/getBlogs';
 $route['section'] = 'create/createSections';
 $route['upload'] = 'create/uploadToSections';
 $route['store-practice-question'] = 'practiceQuestion/store';
@@ -72,3 +75,4 @@ $route['get-chapters-test'] = 'createTest/showTest';
 $route['save-chapters-test'] = 'createTest/saveTestData';
 $route['showUsers'] = 'create/getUserList';
 $route['set-user-confirmation'] = 'create/setUserConfirmation';
+

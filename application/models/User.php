@@ -17,11 +17,11 @@ class User extends CI_Model
             $result=$this->db->query($query);
             foreach ($result->result() as $x)
                 {
-                        $userData=array('id'=>$x->id,'fname'=>$x->first_name , 'lname'=> $x->last_name, 'role'=>$x->role, 'verified'=>$x->verified);
-                        $this->load->library('session');
-                        $this->load->helper('url');
-                        $this->session->set_userdata($userData);
-                        $id=$this->session->userdata('id');
+                    $userData=array('id'=>$x->id,'fname'=>$x->first_name , 'lname'=> $x->last_name, 'role'=>$x->role, 'verified'=>$x->verified);
+                    $this->load->library('session');
+                    $this->load->helper('url');
+                    $this->session->set_userdata($userData);
+                    $id=$this->session->userdata('id');
                 }
             if($result->num_rows()>0)
             {
@@ -33,6 +33,9 @@ class User extends CI_Model
             }
         }
     }
+    
+    
+    
     function userRegistration($data)
     {
         unset($data['confirm_password']);
@@ -40,6 +43,7 @@ class User extends CI_Model
         $data['verified']=0;
         return $this->db->insert('users',$data);        
     }
+    
     function getUsers()
     {
         $query="select id,first_name,last_name,email_id,phone_number,address,city,role,verified from users where role='user' order by id desc";
