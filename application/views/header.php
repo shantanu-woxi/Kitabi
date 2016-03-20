@@ -50,7 +50,7 @@
               </a> <span class="loginHref">|</span>
             </li>
             <li class="loginMenu v-top">
-                <?php if(empty($this->session->userdata['id']) || ($this->session->userdata['verified'])==0){?>
+                <?php if(empty($this->session->userdata['id'])){?>
                      <a class="loginLink loginHref" href="#">Login</a>
                 <?php }else{?>
              <a class="logoutLink logoutHref" href="logout">Logout</a>

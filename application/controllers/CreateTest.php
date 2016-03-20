@@ -18,12 +18,7 @@ class CreateTest extends CI_Controller
         /**delete previous section test for selected subject_id and chapter_id*/
         $this->load->model('SectionTest');
         $deleteResult=$this->SectionTest->deleteSectionTest($subject_id,$chapter_id);
-        
-        if($deleteResult)
-            echo 'previous section test deleted';
-        else
-            echo 'previous section test is not deleted yet.';
-        
+         
         //fetch subject name from id
         $this->load->model('SubjectChapter');
         $subject_name=$this->SubjectChapter->getSubjectName($subject_id);
